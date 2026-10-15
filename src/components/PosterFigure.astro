@@ -1,0 +1,58 @@
+---
+// Poster figure. Archive images are shown exactly as scanned: no filter, tint,
+// duotone or crop to a different ratio. Every one has a caption (title, year,
+// source) and alt text that says what the poster shows and what it
+// campaigned for. Square corners, no frame. Lazy-loaded, with paper-raised
+// showing while it loads.
+//
+// With no `src` it renders the grey 3:4 placeholder box instead, so the alt
+// text still has somewhere to live (as the box's accessible name).
+interface Props {
+  alt: string;
+  caption: string;
+  src?: string;
+  /** Intrinsic size of the real image, so the layout doesn't jump on load. */
+  width?: number;
+  height?: number;
+  /** Text printed inside the placeholder box. */
+  label?: string;
+}
+const { alt, caption, src, width, height, label = 'Poster image' } = Astro.props;
+---
+<figure class="poster">
+  {src ? (
+    <img src={src} alt={alt} width={width} height={height} loading="lazy" decoding="async" />
+  ) : (
+    <div class="poster__placeholder" role="img" aria-label={alt}>
+      <span class="eyebrow">{label}</span>
+      <span class="meta">3 : 4</span>
+    </div>
+  )}
+  <figcaption class="caption">{caption}</figcaption>
+</figure>
+
+<style>
+  .poster {
+    margin: 0;
+  }
+  .poster img {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: var(--paper-raised);
+  }
+  .poster__placeholder {
+    aspect-ratio: 3 / 4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* A warm grey derived from the palette, so it reads as "empty" in both themes. */
+    background: color-mix(in srgb, var(--muted) 28%, var(--paper));
+  }
+  .poster__placeholder .eyebrow { margin: 0; color: var(--ink); }
+  .poster figcaption {
+    margin-top: var(--space-1);
+  }
+</style>

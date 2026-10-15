@@ -1,0 +1,21 @@
+---
+// Body link. Poster red, underlined (global `a` styles). A link that leaves
+// the site carries a small ↗ and opens in a new tab. Pass external={false}
+// for in-site links.
+//
+// While hrefs are still "#" placeholders the new-tab behaviour is skipped so
+// reviewing the draft doesn't spawn a tab per click.
+interface Props {
+  href: string;
+  external?: boolean;
+  class?: string;
+}
+const { href, external = true, class: className } = Astro.props;
+const newTab = external && href !== '#';
+---
+<a
+  href={href}
+  class={className}
+  target={newTab ? '_blank' : undefined}
+  rel={newTab ? 'noopener noreferrer' : undefined}
+><slot />{external && <span aria-hidden="true">&nbsp;↗</span>}{newTab && <span class="visually-hidden"> (opens in a new tab)</span>}</a>

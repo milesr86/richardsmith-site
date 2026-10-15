@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PublicationList from '../components/PublicationList.astro';
+import { intro } from '../data/lorem';
+import data from '../data/publications.json';
+import type { Publication } from '../data/site';
+
+// TODO(placeholder): the list lives in src/data/publications.json and is all dummy data.
+const publications = data.publications as Publication[];
+---
+<BaseLayout
+  title="Publications"
+  description="Publications by Dr Richard G. Smith, newest first, with DOI and repository links."
+  current="/publications/"
+  width="wide"
+>
+  <div class="section">
+    <h1>Publications</h1>
+    <!-- TODO(placeholder): intro is lorem ipsum. -->
+    <p class="measure">{intro}</p>
+  </div>
+
+  <div class="section">
+    <PublicationList publications={publications} />
+  </div>
+</BaseLayout>

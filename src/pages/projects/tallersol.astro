@@ -1,0 +1,53 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PosterFigure from '../../components/PosterFigure.astro';
+import ExtLink from '../../components/ExtLink.astro';
+import { para } from '../../data/lorem';
+
+// TODO(placeholder): four poster slots, all grey boxes. Replace each with
+// <PosterFigure src="…" width={…} height={…} alt="…" caption="…" /> once
+// Tallersol has agreed which posters can be shown.
+const posters = [1, 2, 3, 4];
+---
+<BaseLayout
+  title="Tallersol: Memories of Resistance"
+  description="Tallersol: Memories of Resistance, a project digitising the Tallersol poster collection."
+  current="/projects/"
+  width="read"
+>
+  <div class="section">
+    <!-- TODO(placeholder): eyebrow dates are dummy; all copy on this page is lorem ipsum. -->
+    <p class="eyebrow">Archive · 2021–2026</p>
+    <h1><span lang="es">Tallersol</span>: Memories of Resistance</h1>
+    <p>{para[0]}</p>
+    <p>{para[1]}</p>
+  </div>
+
+  <section class="section" aria-labelledby="posters">
+    <h2 id="posters">Selected posters</h2>
+    <p>{para[2]}</p>
+    <div class="poster-grid">
+      {posters.map((n) => (
+        <PosterFigure
+          alt={`Placeholder alt text for poster ${n}: say what the poster shows and what it campaigned for.`}
+          caption="Poster title, 0000. Source, Place. Courtesy line."
+        />
+      ))}
+    </div>
+    <!-- TODO(placeholder): link target is "#"; point at the UCLA archive. -->
+    <p class="archive-link">The full collection is held at <ExtLink href="#">the UCLA archive</ExtLink>.</p>
+  </section>
+
+  <p class="back"><a href="/projects/">All projects</a></p>
+</BaseLayout>
+
+<style>
+  .poster-grid {
+    display: grid;
+    gap: var(--space-3);
+    margin-top: var(--space-3);
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr));
+  }
+  .archive-link { margin-top: var(--space-3); }
+  .back { margin-top: var(--space-4); }
+</style>

@@ -1,0 +1,43 @@
+---
+// Project card: a 4px top bar marks the strand (poster red for the archive,
+// Andes blue for music and memory; the only place the bar appears), then an
+// eyebrow, a title and one line. No fill, no border. The whole card is the
+// link, with the title underlined on hover.
+interface Props {
+  href: string;
+  eyebrow: string;
+  strand: 'red' | 'blue';
+  /** Heading level for the title. 2 on the Projects index, 3 under a section. */
+  level?: 2 | 3;
+}
+const { href, eyebrow, strand, level = 3 } = Astro.props;
+const Heading = `h${level}` as 'h2' | 'h3';
+---
+<a class:list={['card', `card--${strand}`]} href={href}>
+  <span class="eyebrow card__eyebrow">{eyebrow}</span>
+  <Heading class="item-title card__title"><slot name="title" /></Heading>
+  <p class="card__line"><slot /></p>
+</a>
+
+<style>
+  .card {
+    display: block;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .card::before {
+    content: '';
+    display: block;
+    height: 4px;
+    margin-bottom: var(--space-2);
+    background: var(--poster-red);
+  }
+  .card--blue::before { background: var(--andes); }
+  .card__eyebrow { display: block; }
+  .card__line { margin: 0; }
+  .card:hover .card__title {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+  }
+</style>

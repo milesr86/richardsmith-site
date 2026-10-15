@@ -1,0 +1,40 @@
+---
+// Publication entry. Article title in roman with double quotes; journal and
+// book titles italic in the meta line; co-authors in the order the journal
+// prints them. DOI (and repository copy, where there is one) open in a new
+// tab and carry ↗. Renders a <li>: put it inside a <ul class="plain-list">.
+import ExtLink from './ExtLink.astro';
+import { slug, type Publication } from '../data/site';
+
+interface Props {
+  pub: Publication;
+}
+const { pub } = Astro.props;
+const tags = pub.tags ?? [];
+---
+<li class="entry" data-tags={tags.map(slug).join(' ')}>
+  <h3 class="item-title">“{pub.title}”</h3>
+  <p class="meta">
+    {pub.authors} · <em>{pub.journal}</em>{pub.detail ? ` ${pub.detail}` : ''} · <ExtLink href={pub.doi}>DOI</ExtLink>{pub.repository && <> · <ExtLink href={pub.repository}>Repository</ExtLink></>}
+  </p>
+  {tags.length > 0 && (
+    <ul class="plain-list tags" aria-label="Topics">
+      {tags.map((t) => <li><span class="tag">{t}</span></li>)}
+    </ul>
+  )}
+</li>
+
+<style>
+  .entry + .entry {
+    margin-top: var(--space-3);
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--rule);
+  }
+  .entry .item-title { margin-bottom: var(--space-1); }
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1);
+    margin-top: var(--space-1);
+  }
+</style>

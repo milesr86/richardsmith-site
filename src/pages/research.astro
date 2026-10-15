@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { lede, para } from '../data/lorem';
+---
+<BaseLayout
+  title="Research"
+  description="Research by Dr Richard G. Smith: the PhD and book, and current work."
+  current="/research/"
+  width="read"
+>
+  <div class="section">
+    <h1>Research</h1>
+    <!-- TODO(placeholder): all copy on this page is lorem ipsum. -->
+    <p class="lede">{lede}</p>
+  </div>
+
+  <section class="section" aria-labelledby="research-phd">
+    <!-- TODO(placeholder): section headings follow the guide's page table
+         ("The PhD and book, current work"); confirm the exact wording. -->
+    <h2 id="research-phd">PhD and book</h2>
+    <p>{para[0]}</p>
+    <p>{para[1]}</p>
+  </section>
+
+  <section class="section" aria-labelledby="research-current">
+    <h2 id="research-current">Current work</h2>
+    <p>{para[2]}</p>
+    <p>{para[3]}</p>
+  </section>
+</BaseLayout>

@@ -1,0 +1,88 @@
+{
+  "_todo": "TODO(placeholder): every entry below is dummy data. Replace the whole list with the real publications. Keep the field names; repository, detail and tags are optional. Order doesn't matter: the site sorts newest first by year.",
+  "publications": [
+    {
+      "title": "Placeholder article title one: a subtitle goes here",
+      "authors": "Surname, Surname and Smith",
+      "journal": "Journal of Placeholder Studies",
+      "detail": "12(3)",
+      "year": 2025,
+      "doi": "#",
+      "repository": "#",
+      "tags": [
+        "Music",
+        "Exile"
+      ]
+    },
+    {
+      "title": "Placeholder article title two",
+      "authors": "Surname and Smith",
+      "journal": "Placeholder Review",
+      "detail": "8(1)",
+      "year": 2025,
+      "doi": "#",
+      "tags": [
+        "Music",
+        "Merseyside"
+      ]
+    },
+    {
+      "title": "Placeholder chapter title three: a longer title that wraps onto a second line to show how entries behave",
+      "authors": "Smith",
+      "journal": "Handbook of Placeholder Histories",
+      "detail": "pp. 101–120",
+      "year": 2025,
+      "doi": "#",
+      "repository": "#",
+      "tags": [
+        "Student movements"
+      ]
+    },
+    {
+      "title": "Placeholder article title four",
+      "authors": "Smith and Surname",
+      "journal": "Journal of Placeholder Studies",
+      "detail": "11(2)",
+      "year": 2024,
+      "doi": "#",
+      "tags": [
+        "Archive"
+      ]
+    },
+    {
+      "title": "Placeholder article title five: music, memory and place",
+      "authors": "Surname, Smith and Surname",
+      "journal": "Placeholder Music Review",
+      "detail": "30(4)",
+      "year": 2024,
+      "doi": "#",
+      "repository": "#",
+      "tags": [
+        "Music",
+        "Exile",
+        "Merseyside"
+      ]
+    },
+    {
+      "title": "Placeholder article title six",
+      "authors": "Smith",
+      "journal": "Bulletin of Placeholder Studies",
+      "detail": "99(5)",
+      "year": 2023,
+      "doi": "#",
+      "tags": [
+        "Student movements",
+        "Archive"
+      ]
+    },
+    {
+      "title": "Placeholder article title seven: an earlier piece",
+      "authors": "Surname and Smith",
+      "journal": "Placeholder History Quarterly",
+      "detail": "5(2)",
+      "year": 2023,
+      "doi": "#",
+      "repository": "#"
+    }
+  ]
+}

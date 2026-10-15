@@ -1,0 +1,87 @@
+---
+// Masthead & nav. Sits on paper (not a raised panel) with a rule hairline
+// beneath. No hamburger: four links fit on a phone and wrap under the
+// wordmark below 640px. The wordmark is plain text, always ink.
+import { nav, siteName } from '../data/site';
+
+interface Props {
+  /** Path of the current nav item, e.g. "/projects/". "/" = Home. */
+  current?: string;
+}
+const { current = '' } = Astro.props;
+---
+<header class="masthead">
+  <div class="shell masthead__inner">
+    <a class="wordmark" href="/" aria-current={current === '/' ? 'page' : undefined}>{siteName}</a>
+    <nav aria-label="Main">
+      <ul class="plain-list masthead__nav">
+        {nav.map((item) => (
+          <li>
+            <a href={item.href} aria-current={current === item.href ? 'page' : undefined}>{item.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .masthead {
+    border-bottom: 1px solid var(--rule);
+  }
+  .masthead__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    column-gap: var(--space-3);
+    padding-block: var(--space-2);
+  }
+  .wordmark {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .masthead__nav {
+    display: flex;
+    flex-wrap: wrap;
+    /* 8px on phones: 16px pushes "About" onto a second row at 360px, and the
+       guide says four links fit. */
+    column-gap: var(--space-1);
+  }
+  nav {
+    /* Below 640px the nav drops onto its own row under the wordmark. */
+    flex-basis: 100%;
+  }
+  @media (min-width: 640px) {
+    nav { flex-basis: auto; }
+    .masthead__nav { column-gap: var(--space-3); }
+  }
+  nav a {
+    display: inline-block;
+    padding-block: 10px;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1.6;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 6px;
+  }
+  nav a:hover {
+    text-decoration-color: var(--rule);
+    text-decoration-thickness: 2px;
+  }
+  nav a[aria-current='page'] {
+    color: var(--poster-red);
+    text-decoration-color: var(--poster-red);
+  }
+</style>

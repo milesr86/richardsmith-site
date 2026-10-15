@@ -1,0 +1,40 @@
+---
+// Footer: one line that wraps on phones, rule hairline above. Profile links
+// are plain text with no icons. No copyright line and no repeat of the nav.
+import ExtLink from './ExtLink.astro';
+import { footerProfiles } from '../data/site';
+---
+<footer class="footer">
+  <div class="shell footer__inner">
+    <!-- TODO(placeholder): confirm the affiliation line wording with Richard. -->
+    <span>Richard G. Smith · University of Liverpool</span>
+    {footerProfiles.map((p) => <ExtLink href={p.href}>{p.label}</ExtLink>)}
+  </div>
+</footer>
+
+<style>
+  .footer {
+    border-top: 1px solid var(--rule);
+  }
+  .footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: var(--space-3);
+    row-gap: 0;
+    padding-block: var(--space-2);
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 22px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .footer__inner :global(a) {
+    color: var(--muted);
+    padding-block: 1px;
+  }
+  .footer__inner :global(a:hover) {
+    color: var(--ink);
+  }
+</style>

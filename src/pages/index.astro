@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FeaturedBook from '../components/FeaturedBook.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import PublicationEntry from '../components/PublicationEntry.astro';
+import { lede, cardLine } from '../data/lorem';
+import data from '../data/publications.json';
+import type { Publication } from '../data/site';
+
+// "Your three most recent outputs" come straight from the publications data,
+// so there is only one list to maintain.
+const recent = [...(data.publications as Publication[])].sort((a, b) => b.year - a.year).slice(0, 3);
+---
+<BaseLayout title="Richard G. Smith" current="/" width="read">
+  <div class="section">
+    <!-- TODO(placeholder): the H1 is the name for now. Decide whether Home
+         should lead with the name or a short statement of the research. -->
+    <h1>Richard G. Smith</h1>
+    <!-- TODO(placeholder): lede is lorem ipsum. One or two sentences on what Richard works on. -->
+    <p class="lede">{lede}</p>
+
+    <div class="home-book">
+      <!-- TODO(placeholder): book title, publisher/year and link are dummy values. -->
+      <FeaturedBook title="Book Title Placeholder: A Subtitle Goes Here" publisher="Publisher, 0000" href="#" />
+    </div>
+  </div>
+
+  <section class="section" aria-labelledby="home-projects">
+    <h2 id="home-projects">Projects</h2>
+    <div class="card-grid">
+      <ProjectCard href="/projects/tallersol/" eyebrow="Archive · 2021–2026" strand="red">
+        <Fragment slot="title"><span lang="es">Tallersol</span>: Memories of Resistance</Fragment>
+        <!-- TODO(placeholder): card eyebrow dates and the one-line summary are dummy. -->
+        {cardLine}
+      </ProjectCard>
+      <ProjectCard href="/projects/migration-music-memory/" eyebrow="Community · ongoing" strand="blue">
+        <Fragment slot="title">Migration, Music and Memory</Fragment>
+        {cardLine}
+      </ProjectCard>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="home-recent">
+    <h2 id="home-recent">Recent work</h2>
+    <ul class="plain-list">
+      {recent.map((pub) => <PublicationEntry pub={pub} />)}
+    </ul>
+    <p class="home-all"><a href="/publications/">All publications</a></p>
+  </section>
+</BaseLayout>
+
+<style>
+  .home-book { margin-top: var(--space-3); }
+  .card-grid {
+    display: grid;
+    gap: var(--space-3);
+    grid-template-columns: minmax(0, 1fr);
+  }
+  @media (min-width: 720px) {
+    .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  .home-all { margin-top: var(--space-3); }
+</style>

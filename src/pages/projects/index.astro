@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { intro, cardLine } from '../../data/lorem';
+---
+<BaseLayout
+  title="Projects"
+  description="Current projects: Tallersol: Memories of Resistance, and Migration, Music and Memory."
+  current="/projects/"
+  width="wide"
+>
+  <div class="section">
+    <h1>Projects</h1>
+    <!-- TODO(placeholder): intro, card eyebrows and card lines are dummy. -->
+    <p class="measure">{intro}</p>
+  </div>
+
+  <div class="section">
+    <div class="card-grid">
+      <ProjectCard href="/projects/tallersol/" eyebrow="Archive · 2021–2026" strand="red" level={2}>
+        <Fragment slot="title"><span lang="es">Tallersol</span>: Memories of Resistance</Fragment>
+        {cardLine}
+      </ProjectCard>
+      <ProjectCard href="/projects/migration-music-memory/" eyebrow="Community · ongoing" strand="blue" level={2}>
+        <Fragment slot="title">Migration, Music and Memory</Fragment>
+        {cardLine}
+      </ProjectCard>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .card-grid {
+    display: grid;
+    gap: var(--space-3);
+    grid-template-columns: minmax(0, 1fr);
+  }
+  @media (min-width: 720px) {
+    .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+</style>

@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PosterFigure from '../components/PosterFigure.astro';
+import ExtLink from '../components/ExtLink.astro';
+import { para } from '../data/lorem';
+import { profiles } from '../data/site';
+---
+<BaseLayout
+  title="About"
+  description="About Dr Richard G. Smith: background, qualifications, profiles and contact."
+  current="/about/"
+  width="read"
+>
+  <div class="section">
+    <h1>About</h1>
+    <div class="intro">
+      <div>
+        <!-- TODO(placeholder): all copy on this page is lorem ipsum. -->
+        <h2 id="about-background">Background</h2>
+        <p>{para[0]}</p>
+        <p>{para[1]}</p>
+      </div>
+      <!-- TODO(placeholder): portrait not chosen yet (style guide, open item 08).
+           Natural light, no studio backdrop, no filter. -->
+      <PosterFigure
+        label="Portrait"
+        alt="Placeholder alt text: describe the portrait of Richard."
+        caption="Portrait credit goes here."
+      />
+    </div>
+  </div>
+
+  <section class="section" aria-labelledby="about-qualifications">
+    <h2 id="about-qualifications">Qualifications</h2>
+    <!-- TODO(placeholder): qualifications are dummy lines. Write them out in
+         full, post-nominals once here and nowhere else (not in the masthead).
+         The second line is the site's example of lang="es" on a Spanish name. -->
+    <ul class="bullets">
+      <li>Degree title, Institution name, 0000</li>
+      <li>Degree title, <span lang="es">Universidad de Chile</span>, 0000</li>
+      <li>Degree title, Institution name, 0000</li>
+    </ul>
+  </section>
+
+  <section class="section" aria-labelledby="about-profiles">
+    <h2 id="about-profiles">Profiles</h2>
+    <ul class="plain-list profiles">
+      {profiles.map((p) => <li><ExtLink href={p.href}>{p.label}</ExtLink></li>)}
+    </ul>
+  </section>
+
+  <section class="section" aria-labelledby="about-contact">
+    <h2 id="about-contact">Contact</h2>
+    <!-- TODO(placeholder): dummy address. Use Richard's preferred contact. -->
+    <p><a href="mailto:name@example.org">name@example.org</a></p>
+  </section>
+</BaseLayout>
+
+<style>
+  .intro {
+    display: grid;
+    gap: var(--space-3);
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .intro :global(.poster) {
+    max-width: 240px;
+  }
+  @media (min-width: 720px) {
+    .intro { grid-template-columns: minmax(0, 1fr) 240px; }
+  }
+  .profiles {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: var(--space-3);
+    row-gap: var(--space-1);
+  }
+</style>

@@ -1,0 +1,229 @@
+/* Richard G. Smith: global styles.
+   Source of truth: richardsmith-site-style-guide.html (Site foundations v0.1).
+   Tokens, type scale and base elements live here; each component keeps its own
+   scoped styles. Square corners and no shadows throughout; the only rounded
+   things are topic tags (999px) and the 2px focus ring. */
+
+/* ---------- Tokens ---------- */
+:root {
+  color-scheme: light dark;
+
+  /* Colour (light). Dark values are swapped in below. */
+  --paper: #F5F0E6;
+  --paper-raised: #FBF8F2;
+  --ink: #1E1B18;
+  --muted: #5E574E;
+  --rule: #D9D0BF;
+  --poster-red: #B3261E;
+  --andes: #1F5F6B;
+  --sun: #E2A93B;
+  /* Not in the guide's token list: text on the sun block is "always ink, in
+     both themes", but --ink turns pale in dark mode (1.9 : 1 on sun). This
+     fixed dark ink gives the 8.1 / 7.4 : 1 the guide's contrast table quotes. */
+  --sun-ink: #1E1B18;
+
+  /* Type */
+  --font-display: "Archivo Narrow", "Arial Narrow", Arial, sans-serif;
+  --font-body: "Newsreader", Georgia, "Times New Roman", serif;
+
+  /* Spacing: four steps, nothing set between them */
+  --space-1: 8px;   /* title to metadata; gap between tags */
+  --space-2: 16px;  /* paragraph gap; side gutter on phones */
+  --space-3: 32px;  /* between entries; panel padding; side gutter from 640px */
+  --space-4: 64px;  /* between page sections */
+
+  /* Shells */
+  --measure: 720px; /* reading column */
+  --wide: 960px;    /* grids and chrome */
+
+  --gutter: var(--space-2);
+}
+
+@media (min-width: 640px) {
+  :root { --gutter: var(--space-3); }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #1A1714;
+    --paper-raised: #24201C;
+    --ink: #EDE6D8;
+    --muted: #B5AC9D;
+    --rule: #3A342D;
+    --poster-red: #F07A6A;
+    --andes: #7FC1CC;
+    --sun: #D9A040;
+  }
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 30px;
+  overflow-wrap: break-word;
+}
+
+main { flex: 1; padding-block: var(--space-4); }
+
+img, svg { max-width: 100%; }
+
+[hidden] { display: none !important; }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  left: var(--space-2);
+  top: -100px;
+  z-index: 10;
+  padding: var(--space-1) var(--space-2);
+  background: var(--ink);
+  color: var(--paper);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 24px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+.skip-link:focus { top: var(--space-1); }
+
+/* ---------- Shells ---------- */
+.shell {
+  width: min(100% - 2 * var(--gutter), var(--wide));
+  margin-inline: auto;
+}
+.shell--read { width: min(100% - 2 * var(--gutter), var(--measure)); }
+.measure { max-width: var(--measure); }
+
+/* Page sections: 64px apart, a hairline rule, then 32px of air. */
+.section + .section {
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--rule);
+}
+
+/* ---------- Type scale ---------- */
+h1, h2, h3 { margin: 0 0 var(--space-2); text-wrap: balance; }
+
+h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 40px;
+  letter-spacing: -0.01em;
+}
+h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 32px;
+}
+@media (min-width: 640px) {
+  h1 { font-size: 52px; line-height: 54px; }
+  h2 { font-size: 30px; line-height: 36px; }
+}
+
+/* H3 / item title: project and article titles in lists. Also applied to
+   <h2> where the heading level needs to be higher (Projects index). */
+h3, .item-title {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 28px;
+  letter-spacing: normal;
+}
+.item-title { margin: 0 0 var(--space-1); }
+
+/* Year marker: Publications only. */
+.year {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 36px;
+  color: var(--poster-red);
+  margin: 0;
+}
+
+.eyebrow {
+  margin: 0 0 var(--space-1);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.lede { font-size: 21px; line-height: 32px; }
+
+.meta { font-size: 15px; line-height: 24px; color: var(--muted); }
+.caption { font-size: 15px; line-height: 24px; font-style: italic; color: var(--muted); }
+
+p { margin: 0 0 var(--space-2); }
+p:last-child { margin-bottom: 0; }
+
+/* ---------- Links and focus ---------- */
+a {
+  color: var(--poster-red);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+a:hover { text-decoration-thickness: 2px; }
+
+:focus-visible {
+  outline: 2px solid var(--poster-red);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ---------- Tag (shared by entries and the filter bar) ---------- */
+.tag {
+  display: inline-block;
+  margin: 0;
+  padding: 3px 10px;
+  border: 1px solid var(--andes);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--andes);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 18px;
+  letter-spacing: 0.04em;
+}
+
+/* ---------- Lists ---------- */
+.plain-list { list-style: none; margin: 0; padding: 0; }
+.bullets {
+  margin: 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
