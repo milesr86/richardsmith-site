@@ -40,3 +40,10 @@ export type Publication = {
 
 export const slug = (s: string) =>
   s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+/** Newest year first; entries within a year keep file order (sort is stable). */
+export const groupByYear = (pubs: Publication[]) => {
+  const sorted = [...pubs].sort((a, b) => b.year - a.year);
+  const years = [...new Set(sorted.map((p) => p.year))];
+  return years.map((year) => ({ year, items: sorted.filter((p) => p.year === year) }));
+};

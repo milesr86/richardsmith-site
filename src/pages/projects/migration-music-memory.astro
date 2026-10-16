@@ -1,9 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import PublicationEntry from '../../components/PublicationEntry.astro';
+import PublicationGroup from '../../components/PublicationGroup.astro';
 import { para } from '../../data/lorem';
 import data from '../../data/publications.json';
-import { slug, type Publication } from '../../data/site';
+import { slug, groupByYear, type Publication } from '../../data/site';
 
 // Related outputs are pulled from the publications list by topic tag, so
 // there is still only one list to maintain.
@@ -11,6 +11,7 @@ const related = [...(data.publications as Publication[])]
   .filter((p) => (p.tags ?? []).some((t) => slug(t) === 'music'))
   .sort((a, b) => b.year - a.year)
   .slice(0, 3);
+const relatedGroups = groupByYear(related);
 ---
 <BaseLayout
   title="Migration, Music and Memory"
@@ -35,9 +36,7 @@ const related = [...(data.publications as Publication[])]
   <section class="section" aria-labelledby="mmm-related">
     <!-- TODO(placeholder): invented section heading; replace or remove. -->
     <h2 id="mmm-related">Related publications</h2>
-    <ul class="plain-list">
-      {related.map((pub) => <PublicationEntry pub={pub} />)}
-    </ul>
+    {relatedGroups.map((g) => <PublicationGroup year={g.year} pubs={g.items} level={3} idPrefix="related" />)}
   </section>
 
   <p class="back"><a href="/projects/">All projects</a></p>

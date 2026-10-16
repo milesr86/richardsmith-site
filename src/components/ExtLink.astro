@@ -7,6 +7,13 @@
 // for a coloured emoji (a blue square), and a drawn arrow looks the same on
 // every device and always takes the link's colour.
 //
+// The arrow is kept on the same line as the link's last word by wrapping the
+// two together in a no-break span (a plain break opportunity before an inline
+// SVG otherwise lets it sit alone at the start of the next line). That needs
+// the link text as a string, so it only applies to plain-text link labels,
+// which is all this site uses; a label containing markup just gets the arrow
+// appended.
+//
 // While hrefs are still "#" placeholders the new-tab behaviour is skipped so
 // reviewing the draft doesn't spawn a tab per click.
 interface Props {
@@ -16,20 +23,31 @@ interface Props {
 }
 const { href, external = true, class: className } = Astro.props;
 const newTab = external && href !== '#';
+
+const label = (await Astro.slots.render('default')).trim();
+const plain = !label.includes('<');
+const cut = plain ? label.lastIndexOf(' ') + 1 : label.length;
+const head = label.slice(0, cut);
+const tail = label.slice(cut);
+
+const arrow =
+  '<svg class="ext-arrow" viewBox="0 0 10 10" aria-hidden="true" focusable="false"><path d="M2 8 L8 2 M3.2 2 H8 V6.8" fill="none" stroke="currentColor" stroke-width="1.25"/></svg>';
 ---
 <a
   href={href}
   class={className}
   target={newTab ? '_blank' : undefined}
   rel={newTab ? 'noopener noreferrer' : undefined}
-><slot />{external && (
-    <svg class="ext-arrow" viewBox="0 0 10 10" aria-hidden="true" focusable="false">
-      <path d="M2 8 L8 2 M3.2 2 H8 V6.8" fill="none" stroke="currentColor" stroke-width="1.25" />
-    </svg>
-  )}{newTab && <span class="visually-hidden"> (opens in a new tab)</span>}</a>
+><Fragment set:html={head} />{external
+    ? <span class="ext-tail"><Fragment set:html={tail + arrow} /></span>
+    : <Fragment set:html={tail} />}{newTab && <span class="visually-hidden"> (opens in a new tab)</span>}</a>
 
 <style>
-  .ext-arrow {
+  .ext-tail {
+    white-space: nowrap;
+  }
+  /* The drawn arrow is injected as raw HTML, so it needs :global. */
+  .ext-tail :global(.ext-arrow) {
     display: inline-block;
     width: 0.7em;
     height: 0.7em;

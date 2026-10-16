@@ -86,3 +86,10 @@ lightness as far as contrast allows, and are listed with their contrast ratios i
 (the slider is hidden when JavaScript is off). **External-link arrows** are a small
 drawn SVG in `ExtLink.astro`, not the "↗" character: iOS replaces that character
 with a coloured emoji.
+
+**Boxes.** Only two things sit in boxes: the book (a `--sun` block, Home only)
+and each year's publications (a `--paper-raised` "citation box", see
+`PublicationGroup.astro`). Everything else is separated by hairline rules and
+space. `docs/readback-2026-10-16.md` records the built values against the style
+guide.
+

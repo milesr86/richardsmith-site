@@ -1,24 +1,19 @@
 ---
-// The Publications list: newest first, grouped under red year markers, with
-// topic buttons that filter it. The filter is a few lines of plain JS; with
+// The Publications list: newest first, one raised box per year, with topic
+// buttons that filter it. The filter is a few lines of plain JS; with
 // JavaScript off the buttons never appear and the full list is shown.
-import PublicationEntry from './PublicationEntry.astro';
-import { slug, type Publication } from '../data/site';
+import PublicationGroup from './PublicationGroup.astro';
+import { slug, groupByYear, type Publication } from '../data/site';
 
 interface Props {
   publications: Publication[];
 }
 const { publications } = Astro.props;
 
-// Newest first. Array.sort is stable, so same-year entries keep file order.
-const sorted = [...publications].sort((a, b) => b.year - a.year);
-
-const years = [...new Set(sorted.map((p) => p.year))];
-const groups = years.map((year) => ({ year, items: sorted.filter((p) => p.year === year) }));
-
-const topics = [...new Set(sorted.flatMap((p) => p.tags ?? []))].sort((a, b) => a.localeCompare(b));
+const groups = groupByYear(publications);
+const topics = [...new Set(publications.flatMap((p) => p.tags ?? []))].sort((a, b) => a.localeCompare(b));
 ---
-<div data-pub-list data-total={sorted.length}>
+<div data-pub-list data-total={publications.length}>
   {topics.length > 0 && (
     <div class="filter" data-filter hidden role="group" aria-label="Filter publications by topic">
       <button type="button" class="tag filter__btn" data-tag="all" aria-pressed="true">All</button>
@@ -29,14 +24,7 @@ const topics = [...new Set(sorted.flatMap((p) => p.tags ?? []))].sort((a, b) => 
   )}
   <p class="meta filter__status" data-status aria-live="polite"></p>
 
-  {groups.map((g) => (
-    <section class="year-group" aria-labelledby={`year-${g.year}`}>
-      <h2 class="year" id={`year-${g.year}`}>{g.year}</h2>
-      <ul class="plain-list entries">
-        {g.items.map((pub) => <PublicationEntry pub={pub} />)}
-      </ul>
-    </section>
-  ))}
+  {groups.map((g) => <PublicationGroup year={g.year} pubs={g.items} level={2} />)}
 </div>
 
 <script>
@@ -56,7 +44,7 @@ const topics = [...new Set(sorted.flatMap((p) => p.tags ?? []))].sort((a, b) => 
         entry.hidden = !match;
         if (match) shown++;
       }
-      // Hide a year marker when every entry under it is filtered out.
+      // Hide a whole box when every entry in it is filtered out.
       for (const group of groups) group.hidden = !group.querySelector('.entry:not([hidden])');
       for (const b of buttons) b.setAttribute('aria-pressed', String(b.dataset.tag === tag));
       status.textContent = tag === 'all' ? '' : `Showing ${shown} of ${entries.length} publications`;
@@ -82,27 +70,7 @@ const topics = [...new Set(sorted.flatMap((p) => p.tags ?? []))].sort((a, b) => 
     color: var(--paper);
   }
   .filter__status {
-    margin: var(--space-1) 0 0;
+    margin: var(--space-1) 0 var(--space-2);
     min-height: 24px;
-  }
-  .year-group + .year-group {
-    margin-top: var(--space-4);
-  }
-  .year-group .entries {
-    margin-top: var(--space-2);
-  }
-
-  /* Two columns from 720px: year marker on the left, entries on the right. */
-  @media (min-width: 720px) {
-    .year-group {
-      display: grid;
-      grid-template-columns: 120px minmax(0, 1fr);
-      column-gap: var(--space-3);
-    }
-    .year-group .entries {
-      margin-top: 0;
-      /* Keeps lines near the 62–70 character measure on the wide shell. */
-      max-width: 640px;
-    }
   }
 </style>

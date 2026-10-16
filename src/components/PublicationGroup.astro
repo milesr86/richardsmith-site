@@ -1,0 +1,59 @@
+---
+// A year's publications in the "citation box": a raised panel (paper-raised,
+// 32px padding, square, no border or shadow) holding the red year marker and
+// that year's entries, separated by hairlines. This and the sun-coloured book
+// block are the only boxed items on the site; everything else is separated by
+// rules and space. (Style guide v0.2, "Boxes".)
+//
+// From 720px the year sits to the left of the entries; below that it sits
+// above them.
+import PublicationEntry from './PublicationEntry.astro';
+import type { Publication } from '../data/site';
+
+interface Props {
+  year: number;
+  pubs: Publication[];
+  /** Heading level for the year: 2 on Publications, 3 under a section heading. */
+  level?: 2 | 3;
+  /** Keeps heading ids unique when a page has more than one list. */
+  idPrefix?: string;
+}
+const { year, pubs, level = 2, idPrefix = 'year' } = Astro.props;
+const Heading = `h${level}` as 'h2' | 'h3';
+const id = `${idPrefix}-${year}`;
+---
+<section class="year-group" aria-labelledby={id}>
+  <Heading class="year" id={id}>{year}</Heading>
+  <ul class="plain-list entries">
+    {pubs.map((pub) => <PublicationEntry pub={pub} />)}
+  </ul>
+</section>
+
+<style>
+  .year-group {
+    background: var(--paper-raised);
+    padding: var(--space-3);
+  }
+  /* Boxes in a stack sit 32px apart. */
+  .year-group + .year-group {
+    margin-top: var(--space-3);
+  }
+  .year {
+    margin-bottom: var(--space-2);
+  }
+
+  @media (min-width: 720px) {
+    .year-group {
+      display: grid;
+      grid-template-columns: 96px minmax(0, 1fr);
+      column-gap: var(--space-3);
+    }
+    .year {
+      margin-bottom: 0;
+    }
+    .entries {
+      /* Keeps lines near the 62–70 character measure inside a wide box. */
+      max-width: 640px;
+    }
+  }
+</style>

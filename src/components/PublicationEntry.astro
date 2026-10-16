@@ -1,8 +1,10 @@
 ---
-// Publication entry. Article title in roman with double quotes; journal and
-// book titles italic in the meta line; co-authors in the order the journal
-// prints them. DOI (and repository copy, where there is one) open in a new
-// tab and carry ↗. Renders a <li>: put it inside a <ul class="plain-list">.
+// Publication entry. Article title in roman with double quotes, at body size
+// (the proposal's presentation; list titles in 21px semibold read too heavy for
+// long scholarly titles); journal and book titles italic in the meta line;
+// co-authors in the order the journal prints them. DOI (and repository copy,
+// where there is one) open in a new tab and carry an arrow. Renders a <li>:
+// put it inside a <ul class="plain-list"> (see PublicationGroup).
 import ExtLink from './ExtLink.astro';
 import { slug, type Publication } from '../data/site';
 
@@ -13,7 +15,7 @@ const { pub } = Astro.props;
 const tags = pub.tags ?? [];
 ---
 <li class="entry" data-tags={tags.map(slug).join(' ')}>
-  <h3 class="item-title">“{pub.title}”</h3>
+  <p class="entry__title">“{pub.title}”</p>
   <p class="meta">
     {pub.authors} · <em>{pub.journal}</em>{pub.detail ? ` ${pub.detail}` : ''} · <ExtLink href={pub.doi}>DOI</ExtLink>{pub.repository && <> · <ExtLink href={pub.repository}>Repository</ExtLink></>}
   </p>
@@ -25,12 +27,20 @@ const tags = pub.tags ?? [];
 </li>
 
 <style>
+  /* Entries are 32px apart in total: 16px, the hairline, 16px. */
   .entry + .entry {
-    margin-top: var(--space-3);
-    padding-top: var(--space-3);
+    margin-top: var(--space-2);
+    padding-top: var(--space-2);
     border-top: 1px solid var(--rule);
   }
-  .entry .item-title { margin-bottom: var(--space-1); }
+  .entry__title {
+    margin: 0 0 var(--space-1);
+    font-size: 18px;
+    line-height: 28px;
+  }
+  .entry .meta {
+    margin: 0;
+  }
   .tags {
     display: flex;
     flex-wrap: wrap;

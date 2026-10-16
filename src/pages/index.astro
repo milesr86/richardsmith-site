@@ -2,14 +2,15 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FeaturedBook from '../components/FeaturedBook.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-import PublicationEntry from '../components/PublicationEntry.astro';
+import PublicationGroup from '../components/PublicationGroup.astro';
 import { lede, cardLine } from '../data/lorem';
 import data from '../data/publications.json';
-import type { Publication } from '../data/site';
+import { groupByYear, type Publication } from '../data/site';
 
 // "Your three most recent outputs" come straight from the publications data,
 // so there is only one list to maintain.
 const recent = [...(data.publications as Publication[])].sort((a, b) => b.year - a.year).slice(0, 3);
+const recentGroups = groupByYear(recent);
 ---
 <BaseLayout title="Richard G. Smith" current="/" width="read">
   <div class="section">
@@ -42,9 +43,7 @@ const recent = [...(data.publications as Publication[])].sort((a, b) => b.year -
 
   <section class="section" aria-labelledby="home-recent">
     <h2 id="home-recent">Recent work</h2>
-    <ul class="plain-list">
-      {recent.map((pub) => <PublicationEntry pub={pub} />)}
-    </ul>
+    {recentGroups.map((g) => <PublicationGroup year={g.year} pubs={g.items} level={3} idPrefix="recent" />)}
     <p class="home-all"><a href="/publications/">All publications</a></p>
   </section>
 </BaseLayout>
