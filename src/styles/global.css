@@ -43,17 +43,41 @@
   :root { --gutter: var(--space-3); }
 }
 
+/* Dark theme: the same inks on dark stock.
+   The style guide's first dark values (red #F07A6A, blue #7FC1CC, sun #D9A040,
+   ink #EDE6D8) lightened every ink into a pastel, which lost the flat screen-
+   print feel and left the yellow block glaring on near-black. These keep each
+   hue and most of its saturation and only drop lightness as far as contrast
+   allows (all text pairs below are >= 4.5 : 1 on paper and on paper-raised).
+
+   Applied two ways: automatically from the visitor's system setting, unless
+   they've picked Light in the footer switch; or when they've picked Dark.
+   KEEP THE TWO BLOCKS IN SYNC. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme='light']) {
     --paper: #1A1714;
     --paper-raised: #24201C;
-    --ink: #EDE6D8;
-    --muted: #B5AC9D;
+    --ink: #E6DFD0;          /* 13.5 : 1 on paper */
+    --muted: #A8A090;        /*  6.9 : 1 */
     --rule: #3A342D;
-    --poster-red: #F07A6A;
-    --andes: #7FC1CC;
-    --sun: #D9A040;
+    --poster-red: #EC5F50;   /*  5.4 : 1 (was #F07A6A, salmon) */
+    --andes: #3DA9BF;        /*  6.5 : 1 (was #7FC1CC, baby cyan) */
+    --sun: #BC862A;          /*  5.4 : 1 with ink text (was #D9A040, glaring) */
   }
+}
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --paper: #1A1714;
+  --paper-raised: #24201C;
+  --ink: #E6DFD0;
+  --muted: #A8A090;
+  --rule: #3A342D;
+  --poster-red: #EC5F50;
+  --andes: #3DA9BF;
+  --sun: #BC862A;
+}
+:root[data-theme='light'] {
+  color-scheme: light;
 }
 
 /* ---------- Base ---------- */

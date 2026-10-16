@@ -1,0 +1,100 @@
+---
+// Light / Dark / System switch. System (the default) follows the visitor's
+// device; Light and Dark override it, and the choice is remembered in this
+// browser only (localStorage). Plain text, no icons. Hidden when JavaScript is
+// off, since it couldn't do anything then; the page still follows the system.
+const choices = [
+  { value: 'light', label: 'Light' },
+  { value: 'dark', label: 'Dark' },
+  { value: 'system', label: 'System' },
+];
+---
+<div class="theme-switch" role="group" aria-label="Colour theme">
+  <span class="theme-switch__label" aria-hidden="true">Theme</span>
+  {choices.map((c) => (
+    <button type="button" data-theme-choice={c.value} aria-pressed="false">{c.label}</button>
+  ))}
+</div>
+
+<script>
+  const KEY = 'theme';
+  const root = document.documentElement;
+  const buttons = [...document.querySelectorAll<HTMLButtonElement>('[data-theme-choice]')];
+  const metas = [...document.querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]')];
+  const PAPER = { light: '#F5F0E6', dark: '#1A1714' } as const;
+
+  type Choice = 'light' | 'dark' | 'system';
+
+  const read = (): Choice => {
+    try {
+      const v = localStorage.getItem(KEY);
+      return v === 'light' || v === 'dark' ? v : 'system';
+    } catch {
+      return 'system';
+    }
+  };
+
+  const apply = (choice: Choice) => {
+    if (choice === 'system') root.removeAttribute('data-theme');
+    else root.setAttribute('data-theme', choice);
+
+    // Keep the browser's address-bar colour in step with the page.
+    for (const m of metas) {
+      const forDark = (m.getAttribute('media') ?? '').includes('dark');
+      m.content = choice === 'system' ? (forDark ? PAPER.dark : PAPER.light) : PAPER[choice];
+    }
+    for (const b of buttons) b.setAttribute('aria-pressed', String(b.dataset.themeChoice === choice));
+  };
+
+  apply(read());
+
+  for (const b of buttons) {
+    b.addEventListener('click', () => {
+      const choice = (b.dataset.themeChoice ?? 'system') as Choice;
+      try {
+        if (choice === 'system') localStorage.removeItem(KEY);
+        else localStorage.setItem(KEY, choice);
+      } catch {
+        /* storage blocked (private window): the choice still applies for this visit */
+      }
+      apply(choice);
+    });
+  }
+</script>
+
+<style>
+  .theme-switch {
+    display: none;
+  }
+  :global(.js) .theme-switch {
+    display: flex;
+    align-items: baseline;
+    column-gap: var(--space-2);
+  }
+  .theme-switch__label {
+    color: var(--muted);
+  }
+  button {
+    margin: 0;
+    padding: 4px 0;
+    border: 0;
+    background: transparent;
+    color: var(--muted);
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: transparent;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 5px;
+  }
+  button:hover {
+    color: var(--ink);
+  }
+  /* The current choice: ink and underlined, so it isn't shown by colour alone. */
+  button[aria-pressed='true'] {
+    color: var(--ink);
+    text-decoration-color: var(--ink);
+  }
+</style>

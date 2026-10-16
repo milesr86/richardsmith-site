@@ -2,6 +2,7 @@
 // Footer: one line that wraps on phones, rule hairline above. Profile links
 // are plain text with no icons. No copyright line and no repeat of the nav.
 import ExtLink from './ExtLink.astro';
+import ThemeSwitch from './ThemeSwitch.astro';
 import { footerProfiles } from '../data/site';
 ---
 <footer class="footer">
@@ -9,6 +10,7 @@ import { footerProfiles } from '../data/site';
     <!-- TODO(placeholder): confirm the affiliation line wording with Richard. -->
     <span>Richard G. Smith · University of Liverpool</span>
     {footerProfiles.map((p) => <ExtLink href={p.href}>{p.label}</ExtLink>)}
+    <div class="footer__theme"><ThemeSwitch /></div>
   </div>
 </footer>
 
@@ -36,5 +38,15 @@ import { footerProfiles } from '../data/site';
   }
   .footer__inner :global(a:hover) {
     color: var(--ink);
+  }
+  /* Pushed to the right edge on wide screens; on phones it wraps onto its own row. */
+  .footer__theme {
+    margin-left: auto;
+  }
+  @media (max-width: 639.98px) {
+    .footer__theme {
+      flex-basis: 100%;
+      margin-left: 0;
+    }
   }
 </style>

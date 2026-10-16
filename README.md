@@ -72,3 +72,12 @@ that leave the site carry a ↗); Spanish names are marked `lang="es"`; one H1 p
 One deliberate departure from the guide: below 640px the nav collapses behind a
 burger button (the guide originally said "no hamburger"). From 640px up the four
 links sit inline, and with JavaScript off they simply show.
+
+**Light / dark.** The site follows the visitor's system setting by default, and
+the footer has a Light / Dark / System switch that overrides it (remembered in
+that browser only). The dark palette also departs from the guide's first dark
+values: those lightened every ink into a pastel (salmon red, baby-cyan blue, a
+glaring yellow block). The current dark values keep each hue and only drop
+lightness as far as contrast allows, and are listed with their contrast ratios in
+`src/styles/global.css`. Change them there, in both dark blocks (the
+`prefers-color-scheme` one and the `[data-theme='dark']` one).
