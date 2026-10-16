@@ -93,8 +93,11 @@ and each year's publications (a `--paper-raised` "citation box", see
 space. `docs/readback-2026-10-16.md` records the built values against the style
 guide.
 
-**Style guide.** `docs/style-guide-v0.2.html` is the unified guide (open it in a
-browser): the v0.1 foundations and the proposal in one document, matched to this
-build. It supersedes v0.1 and the first-draft proposal. The master copy lives in
-Dropbox; if you change a design value, change it in both places.
-
+**Style guide.** The unified guide (v0.1 foundations and the proposal in one
+document, matched to this build) is published on the site at `/styleguide/`. It is
+a standalone page in `public/styleguide/index.html`, so its styles can't clash with
+the site's. It is deliberately **unlinked** (nothing in the menu, footer or pages
+points to it) but public, and it keeps its own `noindex` for good: do not remove
+that tag at launch the way you do the site-wide one. The master copy lives in
+Dropbox; the published copy differs only by that tag, a favicon and its footer
+note. If you change a design value, change it in both places.
