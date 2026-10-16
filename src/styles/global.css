@@ -17,10 +17,10 @@
   --poster-red: #B3261E;
   --andes: #1F5F6B;
   --sun: #E2A93B;
-  /* Not in the guide's token list: text on the sun block is "always ink, in
-     both themes", but --ink turns pale in dark mode (1.9 : 1 on sun). This
-     fixed dark ink gives the 8.1 / 7.4 : 1 the guide's contrast table quotes. */
-  --sun-ink: #1E1B18;
+  /* Fixed ink for text on the sun block ("always ink, in both themes"). --ink
+     turns pale in dark mode (it would be only 1.9 : 1 on sun), so this stays
+     dark: 8.1 : 1 in light, 5.4 : 1 on the dark theme's deeper ochre. */
+  --on-sun: #1E1B18;
 
   /* Type */
   --font-display: "Archivo Narrow", "Arial Narrow", Arial, sans-serif;

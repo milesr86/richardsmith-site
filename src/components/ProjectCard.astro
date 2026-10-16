@@ -16,7 +16,7 @@ const Heading = `h${level}` as 'h2' | 'h3';
 <a class:list={['card', `card--${strand}`]} href={href}>
   <span class="eyebrow card__eyebrow">{eyebrow}</span>
   <Heading class="item-title card__title"><slot name="title" /></Heading>
-  <p class="card__line"><slot /></p>
+  <p class="card__line meta"><slot /></p>
 </a>
 
 <style>

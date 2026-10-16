@@ -1,6 +1,6 @@
 ---
 // Featured book: the one use of sun as a fill. Home page only.
-// Text on it is always ink (the fixed --sun-ink, in both themes); links on it
+// Text on it is always ink (the fixed --on-sun, in both themes); links on it
 // are ink with an underline, not red. Square corners, no border, no shadow.
 import ExtLink from './ExtLink.astro';
 
@@ -20,20 +20,20 @@ const { title, publisher, href } = Astro.props;
 <style>
   .featured {
     background: var(--sun);
-    color: var(--sun-ink);
+    color: var(--on-sun);
     padding: var(--space-3);
   }
-  .featured .eyebrow { color: var(--sun-ink); }
+  .featured .eyebrow { color: var(--on-sun); }
   .featured__title { margin-bottom: var(--space-1); }
   .featured__meta {
     font-size: 15px;
     line-height: 24px;
   }
   .featured :global(a) {
-    color: var(--sun-ink);
+    color: var(--on-sun);
   }
   /* Red on sun is 3.1 : 1 (light) and 1.2 : 1 (dark), so the ring goes ink. */
   .featured :global(:focus-visible) {
-    outline-color: var(--sun-ink);
+    outline-color: var(--on-sun);
   }
 </style>

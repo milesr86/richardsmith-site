@@ -93,3 +93,8 @@ and each year's publications (a `--paper-raised` "citation box", see
 space. `docs/readback-2026-10-16.md` records the built values against the style
 guide.
 
+**Style guide.** `docs/style-guide-v0.2.html` is the unified guide (open it in a
+browser): the v0.1 foundations and the proposal in one document, matched to this
+build. It supersedes v0.1 and the first-draft proposal. The master copy lives in
+Dropbox; if you change a design value, change it in both places.
+
