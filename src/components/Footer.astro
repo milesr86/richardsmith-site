@@ -1,6 +1,8 @@
 ---
-// Footer: one line that wraps on phones, rule hairline above. Profile links
-// are plain text with no icons. No copyright line and no repeat of the nav.
+// Footer: three lines, always: who it is, the profile links, the theme slider.
+// Rule hairline above. Profile links are plain text with no icons. No
+// copyright line and no repeat of the nav. (With JavaScript off the third line
+// is hidden, since the slider can't work without it.)
 import ExtLink from './ExtLink.astro';
 import ThemeSwitch from './ThemeSwitch.astro';
 import { footerProfiles } from '../data/site';
@@ -8,9 +10,11 @@ import { footerProfiles } from '../data/site';
 <footer class="footer">
   <div class="shell footer__inner">
     <!-- TODO(placeholder): confirm the affiliation line wording with Richard. -->
-    <span>Richard G. Smith · University of Liverpool</span>
-    {footerProfiles.map((p) => <ExtLink href={p.href}>{p.label}</ExtLink>)}
-    <div class="footer__theme"><ThemeSwitch /></div>
+    <p class="footer__line">Richard G. Smith · University of Liverpool</p>
+    <ul class="plain-list footer__links">
+      {footerProfiles.map((p) => <li><ExtLink href={p.href}>{p.label}</ExtLink></li>)}
+    </ul>
+    <ThemeSwitch />
   </div>
 </footer>
 
@@ -20,10 +24,10 @@ import { footerProfiles } from '../data/site';
   }
   .footer__inner {
     display: flex;
-    flex-wrap: wrap;
-    column-gap: var(--space-3);
-    row-gap: 0;
-    padding-block: var(--space-2);
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: var(--space-1);
+    padding-block: var(--space-3);
     font-family: var(--font-display);
     font-weight: 600;
     font-size: 13px;
@@ -32,21 +36,20 @@ import { footerProfiles } from '../data/site';
     text-transform: uppercase;
     color: var(--muted);
   }
+  .footer__line {
+    margin: 0;
+  }
+  .footer__links {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: var(--space-3);
+    row-gap: var(--space-1);
+  }
   .footer__inner :global(a) {
     color: var(--muted);
     padding-block: 1px;
   }
   .footer__inner :global(a:hover) {
     color: var(--ink);
-  }
-  /* Pushed to the right edge on wide screens; on phones it wraps onto its own row. */
-  .footer__theme {
-    margin-left: auto;
-  }
-  @media (max-width: 639.98px) {
-    .footer__theme {
-      flex-basis: 100%;
-      margin-left: 0;
-    }
   }
 </style>

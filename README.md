@@ -74,10 +74,15 @@ burger button (the guide originally said "no hamburger"). From 640px up the four
 links sit inline, and with JavaScript off they simply show.
 
 **Light / dark.** The site follows the visitor's system setting by default, and
-the footer has a Light / Dark / System switch that overrides it (remembered in
+the footer has a Light / System / Dark slider that overrides it (remembered in
 that browser only). The dark palette also departs from the guide's first dark
 values: those lightened every ink into a pastel (salmon red, baby-cyan blue, a
 glaring yellow block). The current dark values keep each hue and only drop
 lightness as far as contrast allows, and are listed with their contrast ratios in
 `src/styles/global.css`. Change them there, in both dark blocks (the
 `prefers-color-scheme` one and the `[data-theme='dark']` one).
+
+**Footer.** Always three lines: name and affiliation, profile links, theme slider
+(the slider is hidden when JavaScript is off). **External-link arrows** are a small
+drawn SVG in `ExtLink.astro`, not the "↗" character: iOS replaces that character
+with a coloured emoji.
