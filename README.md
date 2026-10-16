@@ -68,3 +68,7 @@ Main jobs:
 Square corners and no shadows (rounded only on tags and the focus ring); red is
 the only accent; sun is a fill used once, on the book block; no icon set (links
 that leave the site carry a ↗); Spanish names are marked `lang="es"`; one H1 per page.
+
+One deliberate departure from the guide: below 640px the nav collapses behind a
+burger button (the guide originally said "no hamburger"). From 640px up the four
+links sit inline, and with JavaScript off they simply show.

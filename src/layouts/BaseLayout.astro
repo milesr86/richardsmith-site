@@ -49,6 +49,10 @@ const fullTitle = title === siteName ? siteName : `${title} · ${siteName}`;
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
+    <!-- Lets the CSS tell "JavaScript is running" (burger menu) from "it isn't"
+         (links just show), with no flash of the wrong one. -->
+    <script is:inline>document.documentElement.classList.add('js');</script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link

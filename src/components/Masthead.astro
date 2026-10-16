@@ -1,7 +1,11 @@
 ---
 // Masthead & nav. Sits on paper (not a raised panel) with a rule hairline
-// beneath. No hamburger: four links fit on a phone and wrap under the
-// wordmark below 640px. The wordmark is plain text, always ink.
+// beneath. The wordmark is plain text, always ink.
+//
+// From 640px up the four links sit on one row beside the wordmark. Below
+// 640px they collapse behind a burger button (Miles's call, overriding the
+// style guide's earlier "no hamburger"). With JavaScript off the burger never
+// appears and the links just show, wrapped under the wordmark.
 import { nav, siteName } from '../data/site';
 
 interface Props {
@@ -13,7 +17,19 @@ const { current = '' } = Astro.props;
 <header class="masthead">
   <div class="shell masthead__inner">
     <a class="wordmark" href="/" aria-current={current === '/' ? 'page' : undefined}>{siteName}</a>
-    <nav aria-label="Main">
+
+    <button
+      type="button"
+      class="menu-toggle"
+      aria-expanded="false"
+      aria-controls="site-nav"
+      data-nav-toggle
+    >
+      <span class="visually-hidden">Menu</span>
+      <span class="menu-toggle__bars" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+
+    <nav id="site-nav" aria-label="Main" data-open="false">
       <ul class="plain-list masthead__nav">
         {nav.map((item) => (
           <li>
@@ -24,6 +40,33 @@ const { current = '' } = Astro.props;
     </nav>
   </div>
 </header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('[data-nav-toggle]');
+  const nav = document.getElementById('site-nav');
+
+  if (toggle && nav) {
+    const wide = window.matchMedia('(min-width: 640px)');
+
+    const setOpen = (open: boolean) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      nav.dataset.open = String(open);
+    };
+
+    toggle.addEventListener('click', () => setOpen(toggle.getAttribute('aria-expanded') !== 'true'));
+
+    // Escape closes the menu and hands focus back to the button.
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+
+    // Widening past 640px shows the inline nav, so reset the stored state.
+    wide.addEventListener('change', () => setOpen(false));
+  }
+</script>
 
 <style>
   .masthead {
@@ -46,20 +89,21 @@ const { current = '' } = Astro.props;
     color: var(--ink);
     text-decoration: none;
   }
+
+  /* The burger is only ever shown on phones, and only when JS can drive it. */
+  .menu-toggle {
+    display: none;
+  }
+
   .masthead__nav {
     display: flex;
     flex-wrap: wrap;
-    /* 8px on phones: 16px pushes "About" onto a second row at 360px, and the
-       guide says four links fit. */
+    /* No-JS phones: all four links on one row with 8px between them (16px
+       pushes "About" onto a second row at 360px). */
     column-gap: var(--space-1);
   }
   nav {
-    /* Below 640px the nav drops onto its own row under the wordmark. */
     flex-basis: 100%;
-  }
-  @media (min-width: 640px) {
-    nav { flex-basis: auto; }
-    .masthead__nav { column-gap: var(--space-3); }
   }
   nav a {
     display: inline-block;
@@ -83,5 +127,63 @@ const { current = '' } = Astro.props;
   nav a[aria-current='page'] {
     color: var(--poster-red);
     text-decoration-color: var(--poster-red);
+  }
+
+  @media (min-width: 640px) {
+    nav { flex-basis: auto; }
+    .masthead__nav { column-gap: var(--space-3); }
+  }
+
+  /* ---------- Phones with JS: burger + stacked menu ---------- */
+  @media (max-width: 639.98px) {
+    :global(.js) .masthead__inner {
+      align-items: center;
+      padding-block: var(--space-1);
+    }
+    :global(.js) .menu-toggle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      margin: 0 -11px 0 0; /* bars line up with the page gutter */
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent; /* no blue/grey flash on touch */
+    }
+    .menu-toggle__bars {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      width: 22px;
+    }
+    .menu-toggle__bars span {
+      display: block;
+      height: 2px;
+      background: currentColor;
+    }
+    /* Open: the three bars become a cross. */
+    .menu-toggle[aria-expanded='true'] .menu-toggle__bars span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .menu-toggle[aria-expanded='true'] .menu-toggle__bars span:nth-child(2) { opacity: 0; }
+    .menu-toggle[aria-expanded='true'] .menu-toggle__bars span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    :global(.js) nav[data-open='false'] {
+      display: none;
+    }
+    :global(.js) .masthead__nav {
+      flex-direction: column;
+    }
+    :global(.js) nav a {
+      display: block;
+      padding-block: 12px;
+      border-top: 1px solid var(--rule);
+      text-decoration: none;
+    }
+    :global(.js) nav a[aria-current='page'] {
+      text-decoration: none;
+    }
   }
 </style>
