@@ -30,13 +30,13 @@
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --paper: #1A1714; --paper-raised: #2C2723; --ink: #E6DFD0; --muted: #A8A090;
+      --paper: #110F0D; --paper-raised: #2C2723; --ink: #E6DFD0; --muted: #A8A090;
       --rule: #403931; --poster-red: #EE6657; --andes: #3DA9BF; --sun: #BC862A;
       color-scheme: dark;
     }
   }
   :root[data-theme="dark"] {
-    --paper: #1A1714; --paper-raised: #2C2723; --ink: #E6DFD0; --muted: #A8A090;
+    --paper: #110F0D; --paper-raised: #2C2723; --ink: #E6DFD0; --muted: #A8A090;
     --rule: #403931; --poster-red: #EE6657; --andes: #3DA9BF; --sun: #BC862A;
     color-scheme: dark;
   }
@@ -79,7 +79,7 @@
   .tile .lab { font-family: var(--display); font-weight: 600; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; }
   .t-light { background: #F5F0E6; color: #1E1B18; }
   .t-light .lab { color: #5E574E; }
-  .t-dark { background: #1A1714; color: #E6DFD0; }
+  .t-dark { background: #110F0D; color: #E6DFD0; }
   .t-dark .lab { color: #A8A090; }
   .t-sun { background: #E2A93B; color: #1E1B18; }
   .dodont { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-3); margin-top: var(--space-3); }
@@ -268,7 +268,7 @@
       <p>One document now holds everything: the v0.1 foundations, the proposal's pages, voice, image rules and accessibility statement, and what the first build taught. What moved:</p>
       <ol class="changes">
         <li><b>Two boxes, named.</b> The book (sun) and each year's publications (paper raised) are the only boxed items. Everything else is rules and space. This settles v0.1's clash between "panels and the citation box" and "not boxes".</li>
-        <li><b>Dark palette redone.</b> The same inks, deepened instead of lightened: red stays red, the blue stays teal, and the yellow block is a darker ochre. New fixed ink, <code>--on-sun</code>, for text on it. The raised panel is lifted further in dark so the citation box stands out against the page.</li>
+        <li><b>Dark palette redone.</b> The same inks, deepened instead of lightened: red stays red, the blue stays teal, and the yellow block is a darker ochre. New fixed ink, <code>--on-sun</code>, for text on it. The page ground is deeper and the raised panel lifted, so the citation box stands out against it.</li>
         <li><b>Publication titles</b> are 18px regular in quotes, as the proposal and v0.1's own specimen showed. The 21px semibold style is for project titles and the book.</li>
         <li><b>Phone menu</b> is a burger below 640px. v0.1 said no hamburger.</li>
         <li><b>Footer</b> is three lines at every size, and gains the Light / System / Dark slider.</li>
@@ -352,7 +352,7 @@
       <p>In dark mode the same inks are kept but deepened, not lightened. Red stays red, the blue stays teal, and the yellow block turns a darker ochre instead of glowing against the dark page.</p>
     </div>
     <div class="swatches">
-      <div class="sw"><div class="chips"><span style="background:#F5F0E6"></span><span style="background:#1A1714"></span></div><div class="chip-key"><span>Light</span><span>Dark</span></div><div class="name">Paper</div><div class="meta">#F5F0E6 · #1A1714<br>Page background. Never pure white or black.</div></div>
+      <div class="sw"><div class="chips"><span style="background:#F5F0E6"></span><span style="background:#110F0D"></span></div><div class="chip-key"><span>Light</span><span>Dark</span></div><div class="name">Paper</div><div class="meta">#F5F0E6 · #110F0D<br>Page background. Never pure white or black.</div></div>
       <div class="sw"><div class="chips"><span style="background:#FBF8F2"></span><span style="background:#2C2723"></span></div><div class="chip-key"><span>Light</span><span>Dark</span></div><div class="name">Paper raised</div><div class="meta">#FBF8F2 · #2C2723<br>The citation box. The only other panel colour. Lifted in dark so the box stands out.</div></div>
       <div class="sw"><div class="chips"><span style="background:#1E1B18"></span><span style="background:#E6DFD0"></span></div><div class="chip-key"><span>Light</span><span>Dark</span></div><div class="name">Ink</div><div class="meta">#1E1B18 · #E6DFD0<br>Headings, body copy, the wordmark.</div></div>
       <div class="sw"><div class="chips"><span style="background:#5E574E"></span><span style="background:#A8A090"></span></div><div class="chip-key"><span>Light</span><span>Dark</span></div><div class="name">Muted</div><div class="meta">#5E574E · #A8A090<br>Dates, journal names, captions, labels.</div></div>
@@ -367,13 +367,13 @@
       <table>
         <thead><tr><th>Text on ground</th><th>Light, paper</th><th>Light, raised</th><th>Dark, paper</th><th>Dark, raised</th><th>Used for</th></tr></thead>
         <tbody>
-          <tr><td>Ink</td><td>15.1</td><td>16.2</td><td>13.5</td><td>11.1</td><td>All body copy and headings</td></tr>
-          <tr><td>Muted</td><td>6.3</td><td>6.7</td><td>6.9</td><td>5.7</td><td>Metadata and captions</td></tr>
-          <tr><td>Poster red</td><td>5.8</td><td>6.2</td><td>5.7</td><td>4.7</td><td>Links, year markers</td></tr>
-          <tr><td>Andes blue</td><td>6.4</td><td>6.8</td><td>6.5</td><td>5.4</td><td>Tags</td></tr>
+          <tr><td>Ink</td><td>15.1</td><td>16.2</td><td>14.4</td><td>11.1</td><td>All body copy and headings</td></tr>
+          <tr><td>Muted</td><td>6.3</td><td>6.7</td><td>7.4</td><td>5.7</td><td>Metadata and captions</td></tr>
+          <tr><td>Poster red</td><td>5.8</td><td>6.2</td><td>6.1</td><td>4.7</td><td>Links, year markers</td></tr>
+          <tr><td>Andes blue</td><td>6.4</td><td>6.8</td><td>6.9</td><td>5.4</td><td>Tags</td></tr>
           <tr><td>On-sun ink on sun</td><td>8.1</td><td>–</td><td>5.4</td><td>–</td><td>The featured book block</td></tr>
-          <tr><td>Paper on Andes blue</td><td>6.4</td><td>–</td><td>6.5</td><td>–</td><td>A selected filter tag</td></tr>
-          <tr><td>Paper on ink</td><td>15.1</td><td>–</td><td>13.5</td><td>–</td><td>The chosen stop of the theme slider</td></tr>
+          <tr><td>Paper on Andes blue</td><td>6.4</td><td>–</td><td>6.9</td><td>–</td><td>A selected filter tag</td></tr>
+          <tr><td>Paper on ink</td><td>15.1</td><td>–</td><td>14.4</td><td>–</td><td>The chosen stop of the theme slider</td></tr>
           </tbody>
       </table>
     </div>
@@ -712,7 +712,7 @@
     <h2 class="h2">Decisions &amp; open questions</h2>
     <div class="read"><p>Settled decisions first, so nobody "fixes" them later. The open items are the ones to settle with Richard before or during the build.</p></div>
     <div class="reg read">
-      <div><b>01 — Light and dark, both designed<span class="state settled">Settled</span></b><p>The site follows the visitor's setting, and a Light / System / Dark slider in the footer lets anyone override it, remembered in that browser only. Dark is a dark paper, not black, and every token has a value for it. The dark inks are deepened rather than lightened (section 04).</p></div>
+      <div><b>01 — Light and dark, both designed<span class="state settled">Settled</span></b><p>The site follows the visitor's setting, and a Light / System / Dark slider in the footer lets anyone override it, remembered in that browser only. Dark is a deep warm paper (#110F0D) rather than pure black, and every token has a value for it. The dark inks are deepened rather than lightened (section 04).</p></div>
       <div><b>02 — One accent<span class="state settled">Settled</span></b><p>Poster red is the only accent and stays small. Andes blue belongs to the music and memory strand and tags. Sun is a fill, used once, on the book.</p></div>
       <div><b>03 — History and music only<span class="state settled">Settled</span></b><p>The publications list covers the history and music work. Earlier work in other fields isn't listed.</p></div>
       <div><b>04 — Square, flat, and two boxes<span class="state settled">Settled</span></b><p>No shadows anywhere, square corners on everything except tags and the focus ring. Sections are separated by rules and space. Only two things sit in boxes: the book (sun) and each year's publications (paper raised). A box never holds another box.</p></div>
@@ -734,7 +734,7 @@
       <table>
         <thead><tr><th>Item</th><th>v0.1 said</th><th>Now</th></tr></thead>
         <tbody>
-          <tr><td>Dark palette</td><td>ink #EDE6D8, muted #B5AC9D, red #F07A6A, blue #7FC1CC, sun #D9A040, raised #24201C, rule #3A342D</td><td>ink #E6DFD0, muted #A8A090, red #EE6657, blue #3DA9BF, sun #BC862A, raised #2C2723 (the box, lifted so it stands out), rule #403931</td></tr>
+          <tr><td>Dark palette</td><td>paper #1A1714, ink #EDE6D8, muted #B5AC9D, red #F07A6A, blue #7FC1CC, sun #D9A040, raised #24201C, rule #3A342D</td><td>paper #110F0D, ink #E6DFD0, muted #A8A090, red #EE6657, blue #3DA9BF, sun #BC862A, raised #2C2723 (the box, lifted so it stands out), rule #403931</td></tr>
           <tr><td>Publication title</td><td>21px semibold in the type table; 18px regular in the specimen</td><td>18px / 28px regular, in quotes</td></tr>
           <tr><td>Book title</td><td>24px / 30px italic in the specimen; no row in the table</td><td>21px / 28px italic semibold (the H3 style)</td></tr>
           <tr><td>Tag padding</td><td>2px 10px</td><td>3px 10px, so tags are 26px tall</td></tr>

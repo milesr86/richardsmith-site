@@ -55,7 +55,7 @@
    KEEP THE TWO BLOCKS IN SYNC. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
-    --paper: #1A1714;
+    --paper: #110F0D;
     --paper-raised: #2C2723;
     --ink: #E6DFD0;          /* 13.5 : 1 on paper */
     --muted: #A8A090;        /*  6.9 : 1 */
@@ -67,7 +67,7 @@
 }
 :root[data-theme='dark'] {
   color-scheme: dark;
-  --paper: #1A1714;
+  --paper: #110F0D;
   --paper-raised: #2C2723;
   --ink: #E6DFD0;
   --muted: #A8A090;
