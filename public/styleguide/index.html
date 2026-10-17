@@ -30,14 +30,14 @@
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --paper: #1A1714; --paper-raised: #24201C; --ink: #E6DFD0; --muted: #A8A090;
-      --rule: #3A342D; --poster-red: #EC5F50; --andes: #3DA9BF; --sun: #BC862A;
+      --paper: #1A1714; --paper-raised: #2C2723; --ink: #E6DFD0; --muted: #A8A090;
+      --rule: #403931; --poster-red: #EE6657; --andes: #3DA9BF; --sun: #BC862A;
       color-scheme: dark;
     }
   }
   :root[data-theme="dark"] {
-    --paper: #1A1714; --paper-raised: #24201C; --ink: #E6DFD0; --muted: #A8A090;
-    --rule: #3A342D; --poster-red: #EC5F50; --andes: #3DA9BF; --sun: #BC862A;
+    --paper: #1A1714; --paper-raised: #2C2723; --ink: #E6DFD0; --muted: #A8A090;
+    --rule: #403931; --poster-red: #EE6657; --andes: #3DA9BF; --sun: #BC862A;
     color-scheme: dark;
   }
 
@@ -268,7 +268,7 @@
       <p>One document now holds everything: the v0.1 foundations, the proposal's pages, voice, image rules and accessibility statement, and what the first build taught. What moved:</p>
       <ol class="changes">
         <li><b>Two boxes, named.</b> The book (sun) and each year's publications (paper raised) are the only boxed items. Everything else is rules and space. This settles v0.1's clash between "panels and the citation box" and "not boxes".</li>
-        <li><b>Dark palette redone.</b> The same inks, deepened instead of lightened: red stays red, the blue stays teal, and the yellow block is a darker ochre. New fixed ink, <code>--on-sun</code>, for text on it.</li>
+        <li><b>Dark palette redone.</b> The same inks, deepened instead of lightened: red stays red, the blue stays teal, and the yellow block is a darker ochre. New fixed ink, <code>--on-sun</code>, for text on it. The raised panel is lifted further in dark so the citation box stands out against the page.</li>
         <li><b>Publication titles</b> are 18px regular in quotes, as the proposal and v0.1's own specimen showed. The 21px semibold style is for project titles and the book.</li>
         <li><b>Phone menu</b> is a burger below 640px. v0.1 said no hamburger.</li>
         <li><b>Footer</b> is three lines at every size, and gains the Light / System / Dark slider.</li>
@@ -353,31 +353,31 @@
     </div>
     <div class="swatches">
       <div class="sw"><div class="chips"><span style="background:#F5F0E6"></span><span style="background:#1A1714"></span></div><div class="chip-key"><span>Light</span><span>Dark</span></div><div class="name">Paper</div><div class="meta">#F5F0E6 · #1A1714<br>Page background. Never pure white or black.</div></div>
-      <div class="sw"><div class="chips"><span style="background:#FBF8F2"></span><span style="background:#24201C"></span></div><div class="chip-key"><span>Light</span><span>Dark</span></div><div class="name">Paper raised</div><div class="meta">#FBF8F2 · #24201C<br>The citation box. The only other panel colour.</div></div>
+      <div class="sw"><div class="chips"><span style="background:#FBF8F2"></span><span style="background:#2C2723"></span></div><div class="chip-key"><span>Light</span><span>Dark</span></div><div class="name">Paper raised</div><div class="meta">#FBF8F2 · #2C2723<br>The citation box. The only other panel colour. Lifted in dark so the box stands out.</div></div>
       <div class="sw"><div class="chips"><span style="background:#1E1B18"></span><span style="background:#E6DFD0"></span></div><div class="chip-key"><span>Light</span><span>Dark</span></div><div class="name">Ink</div><div class="meta">#1E1B18 · #E6DFD0<br>Headings, body copy, the wordmark.</div></div>
       <div class="sw"><div class="chips"><span style="background:#5E574E"></span><span style="background:#A8A090"></span></div><div class="chip-key"><span>Light</span><span>Dark</span></div><div class="name">Muted</div><div class="meta">#5E574E · #A8A090<br>Dates, journal names, captions, labels.</div></div>
-      <div class="sw"><div class="chips"><span style="background:#B3261E"></span><span style="background:#EC5F50"></span></div><div class="chip-key"><span>Light</span><span>Dark</span></div><div class="name">Poster red</div><div class="meta">#B3261E · #EC5F50<br>Links, the current page, year markers.</div></div>
+      <div class="sw"><div class="chips"><span style="background:#B3261E"></span><span style="background:#EE6657"></span></div><div class="chip-key"><span>Light</span><span>Dark</span></div><div class="name">Poster red</div><div class="meta">#B3261E · #EE6657<br>Links, the current page, year markers.</div></div>
       <div class="sw"><div class="chips"><span style="background:#1F5F6B"></span><span style="background:#3DA9BF"></span></div><div class="chip-key"><span>Light</span><span>Dark</span></div><div class="name">Andes blue</div><div class="meta">#1F5F6B · #3DA9BF<br>Topic tags and the music and memory project.</div></div>
       <div class="sw"><div class="chips"><span style="background:#E2A93B"></span><span style="background:#BC862A"></span></div><div class="chip-key"><span>Light</span><span>Dark</span></div><div class="name">Sun</div><div class="meta">#E2A93B · #BC862A<br>Fill only, at most once a page, ink text on it.</div></div>
       <div class="sw"><div class="chips"><span style="background:#1E1B18"></span><span style="background:#1E1B18"></span></div><div class="chip-key"><span>Light</span><span>Dark</span></div><div class="name">On sun <code>--on-sun</code></div><div class="meta">#1E1B18 · #1E1B18<br>Text on the sun block. Fixed dark in both themes.</div></div>
-      <div class="sw"><div class="chips"><span style="background:#D9D0BF"></span><span style="background:#3A342D"></span></div><div class="chip-key"><span>Light</span><span>Dark</span></div><div class="name">Rule</div><div class="meta">#D9D0BF · #3A342D<br>Hairlines between sections and entries.</div></div>
+      <div class="sw"><div class="chips"><span style="background:#D9D0BF"></span><span style="background:#403931"></span></div><div class="chip-key"><span>Light</span><span>Dark</span></div><div class="name">Rule</div><div class="meta">#D9D0BF · #403931<br>Hairlines between sections and entries.</div></div>
     </div>
 
     <div class="tablewrap">
       <table>
         <thead><tr><th>Text on ground</th><th>Light, paper</th><th>Light, raised</th><th>Dark, paper</th><th>Dark, raised</th><th>Used for</th></tr></thead>
         <tbody>
-          <tr><td>Ink</td><td>15.1</td><td>16.2</td><td>13.5</td><td>12.2</td><td>All body copy and headings</td></tr>
-          <tr><td>Muted</td><td>6.3</td><td>6.7</td><td>6.9</td><td>6.2</td><td>Metadata and captions</td></tr>
-          <tr><td>Poster red</td><td>5.8</td><td>6.2</td><td>5.4</td><td>4.9</td><td>Links, year markers</td></tr>
-          <tr><td>Andes blue</td><td>6.4</td><td>6.8</td><td>6.5</td><td>5.9</td><td>Tags</td></tr>
+          <tr><td>Ink</td><td>15.1</td><td>16.2</td><td>13.5</td><td>11.1</td><td>All body copy and headings</td></tr>
+          <tr><td>Muted</td><td>6.3</td><td>6.7</td><td>6.9</td><td>5.7</td><td>Metadata and captions</td></tr>
+          <tr><td>Poster red</td><td>5.8</td><td>6.2</td><td>5.7</td><td>4.7</td><td>Links, year markers</td></tr>
+          <tr><td>Andes blue</td><td>6.4</td><td>6.8</td><td>6.5</td><td>5.4</td><td>Tags</td></tr>
           <tr><td>On-sun ink on sun</td><td>8.1</td><td>–</td><td>5.4</td><td>–</td><td>The featured book block</td></tr>
           <tr><td>Paper on Andes blue</td><td>6.4</td><td>–</td><td>6.5</td><td>–</td><td>A selected filter tag</td></tr>
           <tr><td>Paper on ink</td><td>15.1</td><td>–</td><td>13.5</td><td>–</td><td>The chosen stop of the theme slider</td></tr>
           </tbody>
       </table>
     </div>
-    <p class="meta" style="margin-top:var(--space-1)">Every pair clears WCAG AA (4.5 : 1) in both themes; the lowest is poster red on raised in dark, 4.9 : 1. Raised is slightly lower than paper in dark and slightly higher in light. Red on sun is never used (3.1 : 1 light, 1.2 : 1 dark), so focus on the book block is drawn in ink.</p>
+    <p class="meta" style="margin-top:var(--space-1)">Every pair clears WCAG AA (4.5 : 1) in both themes; the lowest is poster red on raised in dark, 4.7 : 1. Raised is slightly lower than paper in dark and slightly higher in light. Red on sun is never used (3.1 : 1 light, 1.2 : 1 dark), so focus on the book block is drawn in ink.</p>
   </section>
 
   <section>
@@ -697,7 +697,7 @@
     <p class="eyebrow">09 — Accessibility</p>
     <h2 class="h2">Contrast and the basics</h2>
     <div class="read">
-      <p>Every text colour is checked against WCAG AA on the grounds it sits on, in light and dark (section 04). The weakest text pairing anywhere is 4.9 : 1. Keyboard focus shows as a 2px poster red outline. Each poster's alt text says what it shows and what it was campaigning for. The site follows the visitor's light or dark setting unless they choose otherwise.</p>
+      <p>Every text colour is checked against WCAG AA on the grounds it sits on, in light and dark (section 04). The weakest text pairing anywhere is 4.7 : 1. Keyboard focus shows as a 2px poster red outline. Each poster's alt text says what it shows and what it was campaigning for. The site follows the visitor's light or dark setting unless they choose otherwise.</p>
       <ul class="list" style="margin-top:var(--space-2)">
         <li>One H1 per page, a skip link to the main content, and <code>lang="en-GB"</code> on the page with <code>lang="es"</code> on Spanish names.</li>
         <li>Every image has an alt text slot. Tap and click targets are at least 24px; the menu button is 44px.</li>
@@ -734,7 +734,7 @@
       <table>
         <thead><tr><th>Item</th><th>v0.1 said</th><th>Now</th></tr></thead>
         <tbody>
-          <tr><td>Dark palette</td><td>ink #EDE6D8, muted #B5AC9D, red #F07A6A, blue #7FC1CC, sun #D9A040</td><td>ink #E6DFD0, muted #A8A090, red #EC5F50, blue #3DA9BF, sun #BC862A</td></tr>
+          <tr><td>Dark palette</td><td>ink #EDE6D8, muted #B5AC9D, red #F07A6A, blue #7FC1CC, sun #D9A040, raised #24201C, rule #3A342D</td><td>ink #E6DFD0, muted #A8A090, red #EE6657, blue #3DA9BF, sun #BC862A, raised #2C2723 (the box, lifted so it stands out), rule #403931</td></tr>
           <tr><td>Publication title</td><td>21px semibold in the type table; 18px regular in the specimen</td><td>18px / 28px regular, in quotes</td></tr>
           <tr><td>Book title</td><td>24px / 30px italic in the specimen; no row in the table</td><td>21px / 28px italic semibold (the H3 style)</td></tr>
           <tr><td>Tag padding</td><td>2px 10px</td><td>3px 10px, so tags are 26px tall</td></tr>
