@@ -34,8 +34,8 @@ const fullTitle = title === siteName ? siteName : `${title} · ${siteName}`;
     <meta name="theme-color" content="#F5F0E6" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#110F0D" media="(prefers-color-scheme: dark)" />
 
-    <!-- TODO(placeholder): this is an unpublished draft with dummy content, so
-         search engines are told to stay away. Delete this tag at launch. -->
+    {/* TODO(placeholder): this is an unpublished draft with dummy content, so
+         search engines are told to stay away. Delete this tag at launch. */}
     <meta name="robots" content="noindex, nofollow" />
 
     <meta property="og:type" content="website" />
@@ -44,13 +44,13 @@ const fullTitle = title === siteName ? siteName : `${title} · ${siteName}`;
     <meta property="og:description" content={description} />
     <meta property="og:locale" content="en_GB" />
     <meta name="twitter:card" content="summary" />
-    <!-- TODO(placeholder): og:url / og:image need the domain and the RGS-on-sun
-         social card, neither of which exists yet. -->
+    {/* TODO(placeholder): og:url / og:image need the domain and the RGS-on-sun
+         social card, neither of which exists yet. */}
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
-    <!-- Lets the CSS tell "JavaScript is running" (burger menu) from "it isn't"
-         (links just show), with no flash of the wrong one. -->
+    {/* Lets the CSS tell "JavaScript is running" (burger menu) from "it isn't"
+         (links just show), with no flash of the wrong one. */}
     <script is:inline>
       document.documentElement.classList.add('js');
       // Apply a saved Light/Dark choice before first paint, so a returning
