@@ -1,12 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PublicationList from '../components/PublicationList.astro';
-import { intro } from '../data/lorem';
+import PublicationGroup from '../components/PublicationGroup.astro';
 import data from '../data/publications.json';
-import type { Publication } from '../data/site';
+import { groupByYear, type Publication } from '../data/site';
 
-// TODO(placeholder): the list lives in src/data/publications.json and is all dummy data.
+// The list lives in src/data/publications.json (from Richard's Publications.xlsx).
 const publications = data.publications as Publication[];
+const chemistry = groupByYear(data.chemistry as Publication[]);
 ---
 <BaseLayout
   title="Publications"
@@ -16,11 +17,21 @@ const publications = data.publications as Publication[];
 >
   <div class="section">
     <h1>Publications</h1>
-    <!-- TODO(placeholder): intro is lorem ipsum. -->
-    <p class="measure">{intro}</p>
+    <!-- TODO(approval): intro line is Miles's wording, not Richard's. -->
+    <p class="measure">The book, articles, chapters, reports, blog posts and podcasts, newest first, with links to the published versions.</p>
   </div>
 
   <div class="section">
     <PublicationList publications={publications} />
   </div>
+
+  <section class="section" aria-labelledby="chemistry">
+    <h2 id="chemistry">Earlier work in chemistry</h2>
+    <p class="measure chem-intro">Papers from my earlier career as a chemist, 1984 to 1994.</p>
+    {chemistry.map((g) => <PublicationGroup year={g.year} pubs={g.items} level={3} idPrefix="chem" />)}
+  </section>
 </BaseLayout>
+
+<style>
+  .chem-intro { margin-bottom: var(--space-3); }
+</style>

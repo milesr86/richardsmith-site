@@ -1,30 +1,45 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { lede, para } from '../data/lorem';
+import ExtLink from '../components/ExtLink.astro';
 ---
 <BaseLayout
   title="Research"
-  description="Research by Dr Richard G. Smith: the PhD and book, and current work."
+  description="Research by Dr Richard G. Smith: student resistance to dictatorship in Chile, the Tallersol poster archive, and music, migration and memory."
   current="/research/"
   width="read"
 >
   <div class="section">
     <h1>Research</h1>
-    <!-- TODO(placeholder): all copy on this page is lorem ipsum. -->
-    <p class="lede">{lede}</p>
+    <!-- Richard's Research text is one long paragraph. It is split here into
+         short paragraphs under the two headings; the wording is his, with typos
+         fixed and "Springer Verlag" corrected to Palgrave Macmillan. -->
+    <p class="lede">My PhD research investigated opposition to military dictatorship in Chile by students in Santiago’s secondary schools and at the University of Chile.</p>
   </div>
 
   <section class="section" aria-labelledby="research-phd">
-    <!-- TODO(placeholder): section headings follow the guide's page table
-         ("The PhD and book, current work"); confirm the exact wording. -->
     <h2 id="research-phd">PhD and book</h2>
-    <p>{para[0]}</p>
-    <p>{para[1]}</p>
+    <p>Using participant interviews and archival documents, it examined three movements: an artistic and cultural movement, the struggle for democratic student representation at the university and the corresponding campaign in secondary schools.</p>
+    <p>The thesis is a correction to scholarship that has focused on the shantytown youth of Santiago as the driver of youthful opposition to Pinochet and contributes to a growing understanding of political contention outside the major advanced industrialised economies of Europe and North America.</p>
+    <p>It was published by Palgrave Macmillan in 2024: <ExtLink href="https://doi.org/10.1007/978-3-031-64384-2"><em>Student Resistance to Dictatorship in Chile, 1973–1990: ‘Security to Study, Freedom to Live!’</em></ExtLink></p>
   </section>
 
   <section class="section" aria-labelledby="research-current">
     <h2 id="research-current">Current work</h2>
-    <p>{para[2]}</p>
-    <p>{para[3]}</p>
+
+    <h3><span lang="es">Tallersol</span>: Memories of Resistance</h3>
+    <p>I am part of a Modern Endangered Archives Program project concerning the digital capture and archiving of graphic resistance material from the 1973–1990 Chilean dictatorship safeguarded by <span lang="es">Tallersol</span>, who were part of the cultural resistance to the Pinochet regime. <span lang="es">Tallersol</span> is a graphic workshop founded in Santiago, Chile in 1977. Throughout the remaining years of the Pinochet civil-military dictatorship and to this day, it has produced posters, pamphlets, and leaflets for a range of partners: political, human rights, cultural. Its collection of thousands of posters is being digitised and made available to researchers, campaigners, and the public.</p>
+    <p>Many of the posters were produced to support campaign groups in areas such as women’s and children’s rights, student activism, the urban periphery, international campaigns, and the rights of exiles. They also reflect the crucial role of cultural resistance through music, theatre, and cinema as well as the intersection of political activism and artistic expression. The collection provides important insights into the networks and strategies among urban social movements in Chile in the late 1970s and 1980s.</p>
+    <p>The <span lang="es">Tallersol</span> collection is not just an archive of the past but also of the present and future because it expresses the hopes and aspirations of grassroots activists for what Chile might have looked like after the end of dictatorship. With the shift from social movement resistance to party politics in the transition to democracy and the longer-term, these visions have often been marginalised and excluded from the dominant narrative. The archive continues to grow, and activists use it to campaign for justice and alternative reflections on the legacy of dictatorship and resistance.</p>
+    <!-- TODO(stale): written in mid-2025. Ask Richard whether anything has happened since. -->
+    <p>We were invited to present the posters at the British Library’s event, on 12 September 2023, to mark the 50th anniversary of the coup in Chile. In 2025, the archive was also presented at the SLAS Annual Conference in Bristol, at the International Association for the Study of Forced Migration (IASFM)’s conference, and at the UK Latin American Historians annual conference. Posters from the collection were part of the project <em>Thinking Inside the Box: 1973 – Hope, Struggle and Solidarity</em> with the Universities of Leeds and London. Furthermore, the collection is already being used for teaching undergraduates in Liverpool and UCLA.</p>
+    <p><a href="/projects/tallersol/">More on the project</a></p>
+
+    <h3>Migration, Music and Memory</h3>
+    <p>I am part of the ‘Migration, Music and Memory’ project, which is a joint venture by Music (Professor Sara Cohen) and Languages, Cultures and Film (Professor Lisa Shaw), originally based on the Robert Pring-Mill Collection of Latin American music in the Popular Music Archive of the Institute of Popular Music.</p>
+    <!-- TODO(stale): "by the end of 2025", "recently obtained" and "later this year" were
+         true in mid-2025. Ask Richard for the current position (toolkit, NML funding, RMA). -->
+    <p>Currently funded by a University of Liverpool impact acceleration grant, we aim to produce (by the end of 2025) a toolkit for intergenerational workshops on music and memories in migrant cultures. This will be based on workshops we have done with local Chilean, Yemeni and Ukrainian communities, and an activity with local school children. We have recently obtained seed funding to work with National Museums Liverpool and the local Chilean community.</p>
+    <p>Our work was published in July 2025 in a special issue of the <em>Bulletin of Hispanic Studies</em> (<em>Legacies of the 1973 Coup in Chile: Music, Identity and Resistance</em>) and was presented at the International Association for the Study of Popular Music’s 2025 conference in Paris and will be discussed at the Royal Musical Association’s annual conference later this year. We work closely with the <span lang="es">Pontificia Universidad Católica de Chile</span>’s Arts Faculty archive, which holds the Jan Fairley Archive, the sister collection to the Pring-Mill collection we have in Liverpool.</p>
+    <p><a href="/projects/migration-music-memory/">More on the project</a></p>
   </section>
 </BaseLayout>

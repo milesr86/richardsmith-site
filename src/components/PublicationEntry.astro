@@ -13,11 +13,16 @@ interface Props {
 }
 const { pub } = Astro.props;
 const tags = pub.tags ?? [];
+// A book title is italic with no quotes; everything else is roman in quotes.
+const isBook = pub.kind === 'book';
+// Volume-style details ("102(6), 571–582") follow the venue after a space;
+// anything else ("pp. 81–128", "June 2024", "no. 9", "108–118") after a comma.
+const sep = pub.detail && /^\d+(\(\d+\))?,/.test(pub.detail) ? ' ' : ', ';
 ---
 <li class="entry" data-tags={tags.map(slug).join(' ')}>
-  <p class="entry__title">“{pub.title}”</p>
+  <p class="entry__title">{isBook ? <em>{pub.title}</em> : <>“{pub.title}”</>}</p>
   <p class="meta">
-    {pub.authors} · <em>{pub.journal}</em>{pub.detail ? ` ${pub.detail}` : ''} · <ExtLink href={pub.doi}>DOI</ExtLink>{pub.repository && <> · <ExtLink href={pub.repository}>Repository</ExtLink></>}
+    {pub.authors} · <em>{pub.journal}</em>{pub.detail ? `${sep}${pub.detail}` : ''}{pub.doi && <> · <ExtLink href={pub.doi}>DOI</ExtLink></>}{!pub.doi && pub.url && <> · <ExtLink href={pub.url}>{pub.urlLabel ?? 'Link'}</ExtLink></>}{pub.repository && <> · <ExtLink href={pub.repository}>Repository</ExtLink></>}
   </p>
   {tags.length > 0 && (
     <ul class="plain-list tags" aria-label="Topics">

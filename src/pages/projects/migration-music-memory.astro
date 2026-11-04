@@ -1,7 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PublicationGroup from '../../components/PublicationGroup.astro';
-import { para } from '../../data/lorem';
+import ExtLink from '../../components/ExtLink.astro';
+import { projects } from '../../data/projects';
 import data from '../../data/publications.json';
 import { slug, groupByYear, type Publication } from '../../data/site';
 
@@ -15,33 +16,35 @@ const relatedGroups = groupByYear(related);
 ---
 <BaseLayout
   title="Migration, Music and Memory"
-  description="Migration, Music and Memory, a community research project in Liverpool."
+  description="Migration, Music and Memory, a community research project on music, heritage and identity in Liverpool."
   current="/projects/"
   width="read"
 >
   <div class="section">
-    <!-- TODO(placeholder): eyebrow is dummy; all copy on this page is lorem ipsum. -->
-    <p class="eyebrow">Community · ongoing</p>
+    <p class="eyebrow">{projects[1].eyebrow}</p>
     <h1>Migration, Music and Memory</h1>
-    <p>{para[0]}</p>
-    <p>{para[1]}</p>
+    <p>Working in close partnership with organisations and communities across the Liverpool City Region, we have been investigating cultural heritage, migration, and social identity through a focus on music.</p>
+    <p>We are currently working with local Chilean, Ukrainian and Yemeni communities, and with House of Memories at National Museums Liverpool, to explore music’s role in the transmission of stories and memories across generations, and its influence on people’s sense of place, heritage and identity. Songs chosen by the research participants and associated with notions of inheritance provide a basis for collective listening among groups from each community, and for the sharing of music-related reminiscences.</p>
+    <p>More on the project is on the <ExtLink href="https://www.liverpool.ac.uk/institute-of-popular-music/projects/music-heritage-migration-and-identity/">University of Liverpool Institute of Popular Music’s project page</ExtLink>.</p>
   </div>
 
-  <section class="section" aria-labelledby="mmm-communities">
-    <!-- TODO(placeholder): invented section heading; replace or remove. -->
-    <h2 id="mmm-communities">Communities and partners</h2>
-    <p>{para[2]}</p>
+  <section class="section" aria-labelledby="mmm-partners">
+    <!-- TODO(approval): this section is assembled from sentences in Richard's Research text. -->
+    <h2 id="mmm-partners">Collections and partners</h2>
+    <p>The project is a joint venture between Professor Sara Cohen (Music) and Professor Lisa Shaw (Languages, Cultures and Film), originally based on the Robert Pring-Mill Collection of Latin American music in the Popular Music Archive of the Institute of Popular Music.</p>
+    <p>We work closely with the Arts Faculty archive of the <span lang="es">Pontificia Universidad Católica de Chile</span>, which holds the Jan Fairley Archive, the sister collection to the Pring-Mill collection in Liverpool.</p>
   </section>
 
   <section class="section" aria-labelledby="mmm-related">
-    <!-- TODO(placeholder): invented section heading; replace or remove. -->
     <h2 id="mmm-related">Related publications</h2>
     {relatedGroups.map((g) => <PublicationGroup year={g.year} pubs={g.items} level={3} idPrefix="related" />)}
+    <p class="all"><a href="/publications/">All publications</a></p>
   </section>
 
   <p class="back"><a href="/projects/">All projects</a></p>
 </BaseLayout>
 
 <style>
+  .all { margin-top: var(--space-3); }
   .back { margin-top: var(--space-4); }
 </style>

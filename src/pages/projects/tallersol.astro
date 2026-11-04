@@ -2,30 +2,32 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PosterFigure from '../../components/PosterFigure.astro';
 import ExtLink from '../../components/ExtLink.astro';
-import { para } from '../../data/lorem';
+import { projects } from '../../data/projects';
 
-// TODO(placeholder): four poster slots, all grey boxes. Replace each with
+// TODO(pending): four poster slots, all grey boxes. Replace each with
 // <PosterFigure src="…" width={…} height={…} alt="…" caption="…" /> once
-// Tallersol has agreed which posters can be shown.
+// Tallersol has agreed which posters can be shown. None supplied yet.
 const posters = [1, 2, 3, 4];
 ---
 <BaseLayout
   title="Tallersol: Memories of Resistance"
-  description="Tallersol: Memories of Resistance, a project digitising the Tallersol poster collection."
+  description="Tallersol: Memories of Resistance, a project cataloguing and digitising the Tallersol poster collection from Chile's dictatorship years."
   current="/projects/"
   width="read"
 >
   <div class="section">
-    <!-- TODO(placeholder): eyebrow dates are dummy; all copy on this page is lorem ipsum. -->
-    <p class="eyebrow">Archive · 2021–2026</p>
+    <!-- TODO(pending): eyebrow has no dates until Richard gives the project's start and end. -->
+    <p class="eyebrow">{projects[0].eyebrow}</p>
     <h1><span lang="es">Tallersol</span>: Memories of Resistance</h1>
-    <p>{para[0]}</p>
-    <p>{para[1]}</p>
+    <p>In 1977, four years into the Pinochet civil-military dictatorship over Chile, a collective of artists and activists in Santiago set up <span lang="es">Tallersol</span>, a graphic workshop. Working semi-clandestinely, and despite repeated raids, they designed and printed posters, pamphlets and leaflets for human rights groups, student and women’s organisations, trade unions, church groups and the <span lang="es">poblaciones</span> of the urban periphery. They used whatever inks, paper and printers they could acquire, or hadn’t been confiscated. By founder and director Antonio Kadima’s estimate, they produced more than half of the resistance’s posters in Santiago in the early 1980s.</p>
+    <!-- TODO(check): 9,000 items / about 6,000 posters is from Richard's Home and Projects
+         texts; his Publications entry says "over five thousand posters". Confirm. -->
+    <p>Resistance movements leave few traces by design, but Antonio chose to safeguard over 9,000 printed items, around 6,000 of them posters and still held by <span lang="es">Tallersol</span> in Santiago. They record a resistance that dominant accounts of the dictatorship and the transition pass over, at a time when politicians openly sympathetic to the region’s military regimes are winning power again.</p>
+    <p>For several years I and colleagues at the University of Liverpool have worked with Antonio and the team close to <span lang="es">Tallersol</span> to catalogue and digitise the collection, with funding from the Modern Endangered Archives Program (UCLA Library / Arcadia). The originals remain in Chile, and digital copies are viewable online at <ExtLink href="https://meap.library.ucla.edu/projects/memories-of-resistance/">the project’s page at UCLA</ExtLink>.</p>
   </div>
 
   <section class="section" aria-labelledby="posters">
     <h2 id="posters">Selected posters</h2>
-    <p>{para[2]}</p>
     <div class="poster-grid">
       {posters.map((n) => (
         <PosterFigure
@@ -34,8 +36,7 @@ const posters = [1, 2, 3, 4];
         />
       ))}
     </div>
-    <!-- TODO(placeholder): link target is "#"; point at the UCLA archive. -->
-    <p class="archive-link">The full collection is held at <ExtLink href="#">the UCLA archive</ExtLink>.</p>
+    <p class="archive-link">The full collection is held at <ExtLink href="https://digital.library.ucla.edu/catalog/ark:/21198/z1cz7hzc">the UCLA digital library</ExtLink>.</p>
   </section>
 
   <p class="back"><a href="/projects/">All projects</a></p>

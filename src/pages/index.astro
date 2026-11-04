@@ -3,40 +3,50 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import FeaturedBook from '../components/FeaturedBook.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import PublicationGroup from '../components/PublicationGroup.astro';
-import { lede, cardLine } from '../data/lorem';
+import { projects } from '../data/projects';
 import data from '../data/publications.json';
 import { groupByYear, type Publication } from '../data/site';
 
-// "Your three most recent outputs" come straight from the publications data,
-// so there is only one list to maintain.
-const recent = [...(data.publications as Publication[])].sort((a, b) => b.year - a.year).slice(0, 3);
+// "Recent work" is Richard's own four picks (`featured` in publications.json),
+// so there is still only one list to maintain.
+const recent = (data.publications as Publication[]).filter((p) => p.featured);
 const recentGroups = groupByYear(recent);
 ---
 <BaseLayout title="Richard G. Smith" current="/" width="read">
   <div class="section">
-    <!-- TODO(placeholder): the H1 is the name for now. Decide whether Home
-         should lead with the name or a short statement of the research. -->
     <h1>Richard G. Smith</h1>
-    <!-- TODO(placeholder): lede is lorem ipsum. One or two sentences on what Richard works on. -->
-    <p class="lede">{lede}</p>
+    <!-- TODO(approval): DRAFT lede, written by Miles from Richard's own wording
+         (his Homepage text is a ~110-word third-person bio, so it was not used).
+         Not for launch until Richard or Miles has approved it. -->
+    <p class="lede">I research student opposition to the Pinochet regime in Chile, and, with colleagues, work on a digitised archive of Chilean protest posters and on music, migration and identity in Liverpool.</p>
 
     <div class="home-book">
-      <!-- TODO(placeholder): book title, publisher/year and link are dummy values. -->
-      <FeaturedBook title="Book Title Placeholder: A Subtitle Goes Here" publisher="Publisher, 0000" href="#" />
+      <FeaturedBook
+        title="Student Resistance to Dictatorship in Chile, 1973–1990: ‘Security to Study, Freedom to Live!’"
+        publisher="Palgrave Macmillan, 2024"
+        href="https://link.springer.com/book/10.1007/978-3-031-64384-2"
+        doi="https://doi.org/10.1007/978-3-031-64384-2"
+        isbns={[
+          { label: 'Hardcover', value: '978-3-031-64383-5' },
+          { label: 'Softcover', value: '978-3-031-64386-6' },
+          { label: 'eBook', value: '978-3-031-64384-2' },
+        ]}
+        quote="Smith illuminates a still-obscure period in Chile, and the book is an interesting and welcome addition to the literature on dictatorship and resistance in Latin America."
+        quoteBy="J. Patrice McSherry"
+      />
     </div>
   </div>
 
   <section class="section" aria-labelledby="home-projects">
     <h2 id="home-projects">Projects</h2>
     <div class="card-grid">
-      <ProjectCard href="/projects/tallersol/" eyebrow="Archive · 2021–2026" strand="red">
+      <ProjectCard href={projects[0].href} eyebrow={projects[0].eyebrow} strand={projects[0].strand}>
         <Fragment slot="title"><span lang="es">Tallersol</span>: Memories of Resistance</Fragment>
-        <!-- TODO(placeholder): card eyebrow dates and the one-line summary are dummy. -->
-        {cardLine}
+        {projects[0].line}
       </ProjectCard>
-      <ProjectCard href="/projects/migration-music-memory/" eyebrow="Community · ongoing" strand="blue">
+      <ProjectCard href={projects[1].href} eyebrow={projects[1].eyebrow} strand={projects[1].strand}>
         <Fragment slot="title">Migration, Music and Memory</Fragment>
-        {cardLine}
+        {projects[1].line}
       </ProjectCard>
     </div>
   </section>

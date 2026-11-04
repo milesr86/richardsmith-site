@@ -1,7 +1,7 @@
 # Richard G. Smith: research site
 
 A static [Astro](https://astro.build) site for Dr Richard G. Smith (University of Liverpool).
-**Everything on it is placeholder content.** Nothing here is real yet.
+**Real content from Richard's first supply (Nov 2026) is in; some items are still placeholder or awaiting approval.** Search for `TODO(pending)`, `TODO(check)`, `TODO(approval)`, `TODO(stale)` and `TODO(placeholder)` to list what's left. Not launch-ready.
 
 Not deployed, no Vercel project, no domain. Pages carry `noindex` until launch.
 

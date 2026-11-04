@@ -2,19 +2,39 @@
 // Featured book: the one use of sun as a fill. Home page only.
 // Text on it is always ink (the fixed --on-sun, in both themes); links on it
 // are ink with an underline, not red. Square corners, no border, no shadow.
+//
+// Optional extras (added with Richard's content): a short review quote, and a
+// meta line of ISBNs and the DOI. Both are plain text inside the same block, so
+// the block never holds another box.
 import ExtLink from './ExtLink.astro';
 
 interface Props {
   title: string;
   publisher: string;
   href: string;
+  doi?: string;
+  isbns?: { label: string; value: string }[];
+  quote?: string;
+  quoteBy?: string;
 }
-const { title, publisher, href } = Astro.props;
+const { title, publisher, href, doi, isbns = [], quote, quoteBy } = Astro.props;
 ---
 <aside class="featured" aria-labelledby="featured-book-title">
   <p class="eyebrow">The book</p>
   <h2 class="item-title featured__title" id="featured-book-title"><em>{title}</em></h2>
-  <p class="featured__meta">{publisher} · <ExtLink href={href}>Publisher's page</ExtLink></p>
+  <p class="featured__meta">{publisher} · <ExtLink href={href}>Publisher's page</ExtLink>{doi && <> · <ExtLink href={doi}>DOI</ExtLink></>}</p>
+  {/* TODO(check): source of the quote (publisher blurb, review, endorsement) not supplied. */}
+  {quote && (
+    <blockquote class="featured__quote">
+      <p>‘{quote}’</p>
+      {quoteBy && <footer>{quoteBy}</footer>}
+    </blockquote>
+  )}
+  {isbns.length > 0 && (
+    <p class="featured__isbn">
+      {isbns.map((i, n) => <>{n > 0 && ' · '}{i.label} ISBN {i.value}</>)}
+    </p>
+  )}
 </aside>
 
 <style>
@@ -26,6 +46,24 @@ const { title, publisher, href } = Astro.props;
   .featured .eyebrow { color: var(--on-sun); }
   .featured__title { margin-bottom: var(--space-1); }
   .featured__meta {
+    font-size: 15px;
+    line-height: 24px;
+  }
+  .featured__quote {
+    margin: var(--space-2) 0 0;
+    padding: 0;
+  }
+  .featured__quote p {
+    margin: 0;
+    font-style: italic;
+  }
+  .featured__quote footer {
+    margin-top: 4px;
+    font-size: 15px;
+    line-height: 24px;
+  }
+  .featured__isbn {
+    margin: var(--space-2) 0 0;
     font-size: 15px;
     line-height: 24px;
   }

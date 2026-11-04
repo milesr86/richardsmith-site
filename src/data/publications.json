@@ -1,88 +1,278 @@
 {
-  "_todo": "TODO(placeholder): every entry below is dummy data. Replace the whole list with the real publications. Keep the field names; repository, detail and tags are optional. Order doesn't matter: the site sorts newest first by year.",
+  "_notes": "Source: Richard's Publications.xlsx (the newer of his two lists). Topic tags are proposed by Miles, not supplied by Richard: awaiting approval. `featured` marks Richard's four Home picks. `chemistry` is the separate 'Earlier work in chemistry' block (style guide decision 03 overridden by Miles, 4 Nov 2026). Left out on purpose: the Tallersol 'Resource' entry and the 1987 Sussex thesis. Open: BHS vol 100 year (Richard says 2024, Crossref 2023); Displaced Voices volume ('B' in his file); podcast year (2022 = latest episode).",
   "publications": [
     {
-      "title": "Placeholder article title one: a subtitle goes here",
-      "authors": "Surname, Surname and Smith",
-      "journal": "Journal of Placeholder Studies",
-      "detail": "12(3)",
+      "title": "The Role of Music in the UK’s Chile Solidarity Campaign and in Developing an Exile’s Sense of Self and Place: Francisco Carrasco, Musician and Member of Merseyside’s Chilean Community",
+      "authors": "Carrasco and Smith",
+      "journal": "Bulletin of Hispanic Studies",
+      "detail": "102(6), 571–582",
       "year": 2025,
-      "doi": "#",
-      "repository": "#",
+      "doi": "https://doi.org/10.3828/bhs.2025.33",
+      "tags": [
+        "Music",
+        "Exile",
+        "Merseyside"
+      ],
+      "featured": true
+    },
+    {
+      "title": "Music Heritage, Music-evoked Reminiscence and Cultural Identity: Exploring Musical Connectedness to Family, Community and Place with the Chilean Diaspora of Northern England",
+      "authors": "Cohen, Shaw, Smith and Waldock",
+      "journal": "Bulletin of Hispanic Studies",
+      "detail": "102(6), 553–570",
+      "year": 2025,
+      "doi": "https://doi.org/10.3828/bhs.2025.32",
+      "tags": [
+        "Music",
+        "Merseyside"
+      ],
+      "featured": true
+    },
+    {
+      "title": "Legacies of the 1973 Coup in Chile: Music, Identity and Resistance",
+      "authors": "Cohen, Shaw and Smith (guest editors)",
+      "journal": "Bulletin of Hispanic Studies",
+      "detail": "special issue, 102(6), 517–521",
+      "year": 2025,
+      "doi": "https://doi.org/10.3828/bhs.2025.29",
       "tags": [
         "Music",
         "Exile"
       ]
     },
     {
-      "title": "Placeholder article title two",
-      "authors": "Surname and Smith",
-      "journal": "Placeholder Review",
-      "detail": "8(1)",
-      "year": 2025,
-      "doi": "#",
-      "tags": [
-        "Music",
-        "Merseyside"
-      ]
-    },
-    {
-      "title": "Placeholder chapter title three: a longer title that wraps onto a second line to show how entries behave",
+      "title": "Student Resistance to Dictatorship in Chile, 1973–1990: ‘Security to Study, Freedom to Live!’",
       "authors": "Smith",
-      "journal": "Handbook of Placeholder Histories",
-      "detail": "pp. 101–120",
-      "year": 2025,
-      "doi": "#",
-      "repository": "#",
+      "journal": "Palgrave Macmillan",
+      "year": 2024,
+      "doi": "https://doi.org/10.1007/978-3-031-64384-2",
       "tags": [
         "Student movements"
-      ]
+      ],
+      "kind": "book"
     },
     {
-      "title": "Placeholder article title four",
-      "authors": "Smith and Surname",
-      "journal": "Journal of Placeholder Studies",
-      "detail": "11(2)",
+      "title": "A Culture of Opposition",
+      "authors": "Smith",
+      "journal": "Student Resistance to Dictatorship in Chile, 1973–1990 (Palgrave Macmillan)",
+      "detail": "pp. 81–128",
       "year": 2024,
-      "doi": "#",
+      "doi": "https://doi.org/10.1007/978-3-031-64384-2_3",
+      "tags": [
+        "Student movements"
+      ],
+      "kind": "chapter",
+      "featured": true
+    },
+    {
+      "title": "Researching Latin America in Liverpool: Transnational Connections of Hope and Solidarity",
+      "authors": "Riethof and Smith",
+      "journal": "Bulletin of Hispanic Studies",
+      "detail": "100(10), 1079–1093",
+      "year": 2024,
+      "doi": "https://doi.org/10.3828/bhs.2023.73",
+      "tags": [
+        "Merseyside"
+      ],
+      "featured": true
+    },
+    {
+      "title": "The Semiotics of Solidarity: Reinterpreting Artefacts of Latin American Resistance in Contemporary Leeds",
+      "authors": "Grimaldi and Smith",
+      "journal": "Alternautas",
+      "detail": "11(1), 209–232",
+      "year": 2024,
+      "doi": "https://doi.org/10.31273/an.v11i1.1600",
       "tags": [
         "Archive"
       ]
     },
     {
-      "title": "Placeholder article title five: music, memory and place",
-      "authors": "Surname, Smith and Surname",
-      "journal": "Placeholder Music Review",
-      "detail": "30(4)",
+      "title": "A Concert for Chile",
+      "authors": "Smith",
+      "journal": "University of Liverpool Digital Heritage Laboratory",
+      "detail": "June 2024",
       "year": 2024,
-      "doi": "#",
-      "repository": "#",
+      "url": "https://digitalheritagelab.liverpool.ac.uk/ipma-greatest-hits/a-concert-for-chile",
+      "urlLabel": "Blog post",
       "tags": [
         "Music",
-        "Exile",
-        "Merseyside"
-      ]
+        "Exile"
+      ],
+      "kind": "blog"
     },
     {
-      "title": "Placeholder article title six",
-      "authors": "Smith",
-      "journal": "Bulletin of Placeholder Studies",
-      "detail": "99(5)",
+      "title": "Preserving Memories of Cultural Resistance in Chile: The Archival Process of Tallersol’s Poster Collection",
+      "authors": "Ogass, Smith, Riethof and Redden",
+      "journal": "Displaced Voices: A Journal of Migration, Archives and Cultural Heritage",
+      "detail": "108–118",
       "year": 2023,
-      "doi": "#",
+      "url": "https://resistancerightsandrefuge.uk/ogass-smith-riethof-redden",
+      "urlLabel": "Article",
       "tags": [
-        "Student movements",
         "Archive"
       ]
     },
     {
-      "title": "Placeholder article title seven: an earlier piece",
-      "authors": "Surname and Smith",
-      "journal": "Placeholder History Quarterly",
-      "detail": "5(2)",
+      "title": "Tallersol Cultural Centre: Memories of Resistance",
+      "authors": "Smith",
+      "journal": "H-Net: Humanities & Social Sciences Online",
+      "detail": "29 August 2023",
       "year": 2023,
-      "doi": "#",
-      "repository": "#"
+      "url": "https://networks.h-net.org/group/blog/20004297/blog-tallersol-cultural-centre-memories-resistance-richard-g-smith",
+      "urlLabel": "Blog post",
+      "tags": [
+        "Archive"
+      ],
+      "kind": "blog"
+    },
+    {
+      "title": "Fifty Years of Hope and Struggle",
+      "authors": "Grimaldi and Smith",
+      "journal": "University of London Institute of Languages, Cultures and Societies, Latin American and Caribbean Diaries Blog",
+      "detail": "31 May 2023",
+      "year": 2023,
+      "url": "https://ilcs.sas.ac.uk/centre-latin-american-caribbean-studies-clacs/blogs/fifty-years-hope-struggle",
+      "urlLabel": "Blog post",
+      "kind": "blog"
+    },
+    {
+      "title": "Chile en Liverpool – Music & Memories",
+      "authors": "Cohen, Shaw, Waldock and Smith",
+      "journal": "Institute of Popular Music Podcast",
+      "detail": "Episode 1 (2021); Episode 2: The Robert Pring-Mill Collection (2022); Episode 3: Jan Fairley – A Life in Music (2022)",
+      "year": 2022,
+      "url": "https://open.spotify.com/show/2yJQK6kV4fwAcADfgZEOwr",
+      "urlLabel": "Podcast",
+      "tags": [
+        "Music",
+        "Merseyside"
+      ],
+      "kind": "podcast"
+    },
+    {
+      "title": "‘Security to Study, Freedom to Live!’: School and University Student Resistance to Military Dictatorship in Chile, 1973–1990",
+      "authors": "Smith",
+      "journal": "PhD thesis, University of Liverpool",
+      "detail": "11 March 2022",
+      "year": 2022,
+      "url": "https://livrepository.liverpool.ac.uk/3150100/",
+      "urlLabel": "Repository",
+      "tags": [
+        "Student movements"
+      ],
+      "kind": "thesis"
+    },
+    {
+      "title": "Chile in/en Liverpool: Music & Memories – Música & Memorias",
+      "authors": "Smith",
+      "journal": "University of Liverpool Department of Languages, Cultures and Film Blog",
+      "detail": "28 September 2021",
+      "year": 2021,
+      "url": "https://www.liverpool.ac.uk/languages-cultures-and-film/blog/2021/chile-in-en-liverpool/",
+      "urlLabel": "Blog post",
+      "tags": [
+        "Music",
+        "Merseyside"
+      ],
+      "kind": "blog"
+    },
+    {
+      "title": "From Pinochet to Piñera, Chile’s Secondary School Students Have Long Been a Potent Political Force",
+      "authors": "Smith",
+      "journal": "LSE Latin American and Caribbean Blog",
+      "detail": "8 November 2019",
+      "year": 2019,
+      "url": "https://blogs.lse.ac.uk/latamcaribbean/2019/11/08/from-pinochet-to-pinera-chiles-secondary-school-students-have-long-been-a-potent-political-force/",
+      "urlLabel": "Blog post",
+      "tags": [
+        "Student movements"
+      ],
+      "kind": "blog"
+    },
+    {
+      "title": "The Bioeconomy in the North of England",
+      "authors": "Eaves, McQuilkin, Mortimer and Smith",
+      "journal": "Science and Innovation Audit report for the Department for Business, Energy and Industrial Strategy",
+      "detail": "August 2017",
+      "year": 2017,
+      "url": "https://www.york.ac.uk/media/research/documents/sia-thebioeconomyinthenorthofengland/Science%20and%20Innovation%20Audit%20-%20the%20Bioeconomy%20in%20the%20North%20of%20England%20-%20Full%20report.pdf",
+      "urlLabel": "Report",
+      "kind": "report"
+    }
+  ],
+  "chemistry": [
+    {
+      "title": "Structure-Activity-Relationships for Contact Allergenic Potential of γ,γ-Dimethyl-γ-Butyrolactone Derivatives .1. Synthesis and Electrophilic Reactivity Studies of α-(ω-Substituted-Alkyl)-γ,γ-Dimethyl-γ-Butyrolactones and Correlation of Skin Sensitization Potential and Cross-Sensitization Patterns with Structure",
+      "authors": "Franot, Roberts, Smith, Basketter, Benezra and Lepoittevin",
+      "journal": "Chemical Research in Toxicology",
+      "detail": "7(3), 297–306",
+      "year": 1994,
+      "doi": "https://doi.org/10.1021/tx00039a005"
+    },
+    {
+      "title": "The First Neutral, Mononuclear 4f Metal Thiolates and New Methods for Corresponding Aryl Oxides and Bis(Trimethylsilyl)Amides",
+      "authors": "Cetinkaya, Hitchcock, Lappert and Smith",
+      "journal": "Journal of the Chemical Society, Chemical Communications",
+      "detail": "no. 13, 932–934",
+      "year": 1992,
+      "doi": "https://doi.org/10.1039/C39920000932"
+    },
+    {
+      "title": "Synthesis and Structural Characterization of Trimethylphosphine Complexes of Technetium(III)",
+      "authors": "Watson, Albanese, Calabrese, Ovenall and Smith",
+      "journal": "Inorganic Chemistry",
+      "detail": "30(24), 4638–4643",
+      "year": 1991,
+      "doi": "https://doi.org/10.1021/ic00024a035"
+    },
+    {
+      "title": "Hydrocarbon-Soluble Homoleptic Bulky Aryl Oxides of the Lanthanide Metals: [Ln(OArR)3]",
+      "authors": "Lappert, Singh and Smith",
+      "journal": "Inorganic Syntheses",
+      "detail": "27, 164–168",
+      "year": 1990,
+      "doi": "https://doi.org/10.1002/9780470132586.ch32"
+    },
+    {
+      "title": "Lanthanide Metal(III) Heteroleptic Alkyls - Synthesis of [LnR3(µ-Me)Li(pmdeta)] [Ln = La or Sm, R = (CH(SiMe3)2), pmdeta = N,N,N',N'',N''-Pentamethyldiethylenetriamine] and X-Ray Structure of The Samarium Complex",
+      "authors": "Hitchcock, Lappert and Smith",
+      "journal": "Journal of the Chemical Society, Chemical Communications",
+      "detail": "no. 6, 369–371",
+      "year": 1989,
+      "doi": "https://doi.org/10.1039/C39890000369"
+    },
+    {
+      "title": "Synthesis and Structural Characterization of the First Neutral Homoleptic Lanthanide Metal(III) Alkyls - [LnR3] [Ln = La or Sm, R = CH(SiMe3)2]",
+      "authors": "Hitchcock, Lappert, Smith, Bartlett and Power",
+      "journal": "Journal of the Chemical Society, Chemical Communications",
+      "detail": "no. 15, 1007–1009",
+      "year": 1988,
+      "doi": "https://doi.org/10.1039/C39880001007"
+    },
+    {
+      "title": "Four-Co-ordinate Lanthanide Metal(III) Chloro(Alkyl)s - Synthesis and X-Ray Structure of [LaR3(µ-Cl)Li(pmdeta)] [R = CH(SiMe3)2, pmdeta = N,N,N',N'',N''-Pentamethyldiethylenetriamine]",
+      "authors": "Atwood, Lappert, Smith and Zhang",
+      "journal": "Journal of the Chemical Society, Chemical Communications",
+      "detail": "no. 19, 1308–1309",
+      "year": 1988,
+      "doi": "https://doi.org/10.1039/C39880001308"
+    },
+    {
+      "title": "Tris(2,6-Di-Tert-Butylphenoxo)Yttrium - A Three-Co-ordinate Hydrocarbon-Soluble Aryloxide of Yttrium",
+      "authors": "Hitchcock, Lappert and Smith",
+      "journal": "Inorganica Chimica Acta",
+      "detail": "139, 183–184",
+      "year": 1987,
+      "doi": "https://doi.org/10.1016/S0020-1693(00)84073-6"
+    },
+    {
+      "title": "Synthesis and Structural Characterization of [Ag6(Fe(CO)4)3((Ph2P)3CH)] - A Distorted Tricapped Octahedral Silver-Iron Cluster",
+      "authors": "Briant, Smith and Mingos",
+      "journal": "Journal of the Chemical Society, Chemical Communications",
+      "detail": "no. 9, 586–588",
+      "year": 1984,
+      "doi": "https://doi.org/10.1039/C39840000586"
     }
   ]
 }
