@@ -54,6 +54,19 @@ export type Publication = {
 export const slug = (s: string) =>
   s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
+/**
+ * Inline language markup for plain-string copy (publication titles, card
+ * lines). Write {{es|Tallersol}} and it renders as <span lang="es">Tallersol</span>,
+ * as the style guide requires for Spanish names. Everything else is escaped.
+ * Use with set:html.
+ */
+export const markup = (s: string) =>
+  s
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/\{\{es\|(.+?)\}\}/g, '<span lang="es">$1</span>');
+
 /** Newest year first; entries within a year keep file order (sort is stable). */
 export const groupByYear = (pubs: Publication[]) => {
   const sorted = [...pubs].sort((a, b) => b.year - a.year);

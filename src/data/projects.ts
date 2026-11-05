@@ -1,4 +1,5 @@
 // The two project cards, shared by Home and the Projects index.
+// `line` may contain {{es|…}} language markup (see markup() in site.ts).
 //
 // TODO(approval): the one-line summaries are the style guide's examples
 // (written from Richard's material), not Richard's own words. The Tallersol
@@ -10,7 +11,7 @@ export const projects = [
     href: '/projects/tallersol/',
     eyebrow: 'Archive',
     strand: 'red' as const,
-    line: 'Digitising the Tallersol poster collection with UCLA’s Modern Endangered Archives Program.',
+    line: 'Digitising the {{es|Tallersol}} poster collection with UCLA’s Modern Endangered Archives Program.',
   },
   {
     href: '/projects/migration-music-memory/',

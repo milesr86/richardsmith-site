@@ -6,7 +6,7 @@
 // where there is one) open in a new tab and carry an arrow. Renders a <li>:
 // put it inside a <ul class="plain-list"> (see PublicationGroup).
 import ExtLink from './ExtLink.astro';
-import { slug, type Publication } from '../data/site';
+import { slug, markup, type Publication } from '../data/site';
 
 interface Props {
   pub: Publication;
@@ -20,7 +20,7 @@ const isBook = pub.kind === 'book';
 const sep = pub.detail && /^\d+(\(\d+\))?,/.test(pub.detail) ? ' ' : ', ';
 ---
 <li class="entry" data-tags={tags.map(slug).join(' ')}>
-  <p class="entry__title">{isBook ? <em>{pub.title}</em> : <>“{pub.title}”</>}</p>
+  <p class="entry__title">{isBook ? <em set:html={markup(pub.title)} /> : <>“<Fragment set:html={markup(pub.title)} />”</>}</p>
   <p class="meta">
     {pub.authors} · <em>{pub.journal}</em>{pub.detail ? `${sep}${pub.detail}` : ''}{pub.doi && <> · <ExtLink href={pub.doi}>DOI</ExtLink></>}{!pub.doi && pub.url && <> · <ExtLink href={pub.url}>{pub.urlLabel ?? 'Link'}</ExtLink></>}{pub.repository && <> · <ExtLink href={pub.repository}>Repository</ExtLink></>}
   </p>

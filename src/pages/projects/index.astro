@@ -2,6 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectCard from '../../components/ProjectCard.astro';
 import { projects } from '../../data/projects';
+import { markup } from '../../data/site';
 ---
 <BaseLayout
   title="Projects"
@@ -19,11 +20,11 @@ import { projects } from '../../data/projects';
     <div class="card-grid">
       <ProjectCard href={projects[0].href} eyebrow={projects[0].eyebrow} strand={projects[0].strand} level={2}>
         <Fragment slot="title"><span lang="es">Tallersol</span>: Memories of Resistance</Fragment>
-        {projects[0].line}
+        <Fragment set:html={markup(projects[0].line)} />
       </ProjectCard>
       <ProjectCard href={projects[1].href} eyebrow={projects[1].eyebrow} strand={projects[1].strand} level={2}>
         <Fragment slot="title">Migration, Music and Memory</Fragment>
-        {projects[1].line}
+        <Fragment set:html={markup(projects[1].line)} />
       </ProjectCard>
     </div>
   </div>

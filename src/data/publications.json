@@ -1,5 +1,5 @@
 {
-  "_notes": "Source: Richard's Publications.xlsx (the newer of his two lists). Topic tags are proposed by Miles, not supplied by Richard: awaiting approval. `featured` marks Richard's four Home picks. `chemistry` is the separate 'Earlier work in chemistry' block (style guide decision 03 overridden by Miles, 4 Nov 2026). Left out on purpose: the Tallersol 'Resource' entry and the 1987 Sussex thesis. Open: BHS vol 100 year (Richard says 2024, Crossref 2023); Displaced Voices volume ('B' in his file); podcast year (2022 = latest episode).",
+  "_notes": "Source: Richard's Publications.xlsx (the newer of his two lists). Topic tags are proposed by Miles, not supplied by Richard: awaiting approval. `featured` marks Richard's four Home picks. `chemistry` is the separate 'Earlier work in chemistry' block (style guide decision 03 overridden by Miles, 4 Nov 2026). Left out on purpose: the Tallersol 'Resource' entry and the 1987 Sussex thesis. Open: BHS vol 100 year (Richard says 2024, Crossref 2023); Displaced Voices volume ('B' in his file); podcast year (2022 = latest episode). Titles may contain {{es|…}} to mark Spanish (rendered as lang=\"es\").",
   "publications": [
     {
       "title": "The Role of Music in the UK’s Chile Solidarity Campaign and in Developing an Exile’s Sense of Self and Place: Francisco Carrasco, Musician and Member of Merseyside’s Chilean Community",
@@ -102,7 +102,7 @@
       "kind": "blog"
     },
     {
-      "title": "Preserving Memories of Cultural Resistance in Chile: The Archival Process of Tallersol’s Poster Collection",
+      "title": "Preserving Memories of Cultural Resistance in Chile: The Archival Process of {{es|Tallersol}}’s Poster Collection",
       "authors": "Ogass, Smith, Riethof and Redden",
       "journal": "Displaced Voices: A Journal of Migration, Archives and Cultural Heritage",
       "detail": "108–118",
@@ -114,7 +114,7 @@
       ]
     },
     {
-      "title": "Tallersol Cultural Centre: Memories of Resistance",
+      "title": "{{es|Tallersol}} Cultural Centre: Memories of Resistance",
       "authors": "Smith",
       "journal": "H-Net: Humanities & Social Sciences Online",
       "detail": "29 August 2023",
@@ -137,7 +137,7 @@
       "kind": "blog"
     },
     {
-      "title": "Chile en Liverpool – Music & Memories",
+      "title": "{{es|Chile en Liverpool}} – Music & Memories",
       "authors": "Cohen, Shaw, Waldock and Smith",
       "journal": "Institute of Popular Music Podcast",
       "detail": "Episode 1 (2021); Episode 2: The Robert Pring-Mill Collection (2022); Episode 3: Jan Fairley – A Life in Music (2022)",
@@ -164,7 +164,7 @@
       "kind": "thesis"
     },
     {
-      "title": "Chile in/en Liverpool: Music & Memories – Música & Memorias",
+      "title": "Chile in/en Liverpool: Music & Memories – {{es|Música & Memorias}}",
       "authors": "Smith",
       "journal": "University of Liverpool Department of Languages, Cultures and Film Blog",
       "detail": "28 September 2021",

@@ -5,7 +5,7 @@ import ProjectCard from '../components/ProjectCard.astro';
 import PublicationGroup from '../components/PublicationGroup.astro';
 import { projects } from '../data/projects';
 import data from '../data/publications.json';
-import { groupByYear, type Publication } from '../data/site';
+import { groupByYear, markup, type Publication } from '../data/site';
 
 // "Recent work" is Richard's own four picks (`featured` in publications.json),
 // so there is still only one list to maintain.
@@ -18,7 +18,7 @@ const recentGroups = groupByYear(recent);
     {/* TODO(approval): DRAFT lede, written by Miles from Richard's own wording
          (his Homepage text is a ~110-word third-person bio, so it was not used).
          Not for launch until Richard or Miles has approved it. */}
-    <p class="lede">I research student opposition to the Pinochet regime in Chile, and, with colleagues, work on a digitised archive of Chilean protest posters and on music, migration and identity in Liverpool.</p>
+    <p class="lede">I research student opposition to the Pinochet regime in Chile, and work with Antonio Kadima and <span lang="es">Tallersol</span> on a digitised archive of protest posters, and with Professor Sara Cohen and Professor Lisa Shaw on music, migration and identity in Liverpool.</p>
 
     <div class="home-book">
       <FeaturedBook
@@ -42,11 +42,11 @@ const recentGroups = groupByYear(recent);
     <div class="card-grid">
       <ProjectCard href={projects[0].href} eyebrow={projects[0].eyebrow} strand={projects[0].strand}>
         <Fragment slot="title"><span lang="es">Tallersol</span>: Memories of Resistance</Fragment>
-        {projects[0].line}
+        <Fragment set:html={markup(projects[0].line)} />
       </ProjectCard>
       <ProjectCard href={projects[1].href} eyebrow={projects[1].eyebrow} strand={projects[1].strand}>
         <Fragment slot="title">Migration, Music and Memory</Fragment>
-        {projects[1].line}
+        <Fragment set:html={markup(projects[1].line)} />
       </ProjectCard>
     </div>
   </section>

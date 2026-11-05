@@ -101,3 +101,5 @@ points to it) but public, and it keeps its own `noindex` for good: do not remove
 that tag at launch the way you do the site-wide one. The master copy lives in
 Dropbox; the published copy differs only by that tag, a favicon and its footer
 note. If you change a design value, change it in both places.
+
+**Versioning.** Past versions of the guide are kept in `docs/styleguide/archive/`, with a changelog and the steps to follow before changing it: see `docs/styleguide/README.md`. Archive the current version first, bump the version, log the change, tag it.
